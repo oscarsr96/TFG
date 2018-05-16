@@ -11,12 +11,12 @@ export default class Header extends React.Component {
     if(typeof this.props.tracking.progress_measure === "number"){
       trackingTexts.push(this.props.I18n.getTrans("i.progress_measure") + ": " + (this.props.tracking.progress_measure * 100).toFixed(1) + "%");
     } else {
-      trackingTexts.push(this.props.I18n.getTrans("i.progress_measure") + ": null");
+      trackingTexts.push(this.props.I18n.getTrans("i.progress_measure") + ": 0.0%");
     }
     if(typeof this.props.tracking.score === "number"){
       trackingTexts.push(this.props.I18n.getTrans("i.score") + ": " + (this.props.tracking.score * 100).toFixed(1) + "%");
     } else {
-      trackingTexts.push(this.props.I18n.getTrans("i.score") + ": null");
+      trackingTexts.push(this.props.I18n.getTrans("i.score") + ": 0.0%");
     }
     if(this.props.user_profile){
       if((typeof this.props.user_profile.name === "string")){
@@ -24,7 +24,7 @@ export default class Header extends React.Component {
       }
       if(typeof this.props.user_profile.learner_preference === "object"){
         if(typeof this.props.user_profile.learner_preference.difficulty === "number"){
-          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + this.props.user_profile.learner_preference.difficulty);
+          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + this.props.tracking.difficulty);
         }
       }
     }
@@ -38,12 +38,37 @@ export default class Header extends React.Component {
     });
 
     return (
+      <div>
       <div className="header_wrapper">
+
+        <div className="header_wrapper_title">
         <a target="_blank" href="https://github.com/agordillo/RESCORM"><img src="assets/images/react_logo.png"/></a>
-        <h1 id="heading">{this.props.I18n.getTrans("i.title")}</h1>
-        <p id="tracking">{trackingEls}</p>
+        <h1 id="heading">{this.props.config.titulo}</h1>
+        </div>
+
+        <div className="header_wrapper_logged">
         {loggedEl}
+        </div>
+
       </div>
+      <div className="indicators">
+        <div className="second_header_progress">
+        <p id="tracking">{trackingEls[0]}</p>
+        </div>
+
+        <div className="second_header_score">
+
+        <div className="second_header_score_text">
+        <p id="tracking">{trackingEls[1]}</p>
+        </div>
+
+        </div>
+
+        <div className="second_header_difficulty">
+        <p id="tracking">{trackingEls[2]}</p>
+        </div>
+      </div>
+       </div>
     );
   }
 }

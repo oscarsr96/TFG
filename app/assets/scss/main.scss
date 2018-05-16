@@ -1,13 +1,107 @@
 body {
+  height: auto;
   background-color: white;
 }
 
-div.header_wrapper img {
+div.header_wrapper {
+  
+  width: fit-content;
+  height: 75px;
+  background-color: orange;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+div.header_wrapper div.header_wrapper_title {
+  float: left;
+  width: 33%;
+
+}
+
+div.header_wrapper div.header_wrapper_title img {
   width: 71px;
   height: 50px;
   float: left;
   margin-top: 8px;
+
 }
+
+div.header_wrapper div.header_wrapper_title h1 {
+  text-align: center;
+
+}
+
+
+div.header_wrapper div.header_wrapper_logged {
+  float: right;
+  width: 33%;
+
+}
+
+div.header_wrapper div.header_wrapper_logged p {
+ text-align: center;
+ color: white;
+
+}
+
+
+
+
+
+div.indicators div.second_header_progress  {
+ width: 33%;
+ height: fit-content;
+ float: left;
+}
+
+div.indicators div.second_header_progress p {
+ text-align: center;
+}
+
+div.indicators div.second_header_score  {
+ width: 33%;
+ height: fit-content;
+ float: right;
+}
+
+div.indicators div.second_header_score div.second_header_score_text{
+ width:100%;
+ height: fit-content;
+}
+
+div.indicators div.second_header_score div.second_header_score_text p {
+ text-align: center;
+}
+
+div.indicators div.second_header_score div.second_header_score_circle{
+ width: 0%;
+ height: fit-content;
+ float: right;
+}
+
+
+
+div.indicators div.second_header_difficulty  {
+ width: 33%;
+ height: fit-content;
+ float: right;
+}
+
+div.indicators div.second_header_difficulty p {
+ text-align: center;
+}
+
+div.indicators {
+  width: fit-content;
+  height: 15%;
+  background-color: aquamarine;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 #heading {
   font-size: 30px;
@@ -28,4 +122,52 @@ div.header_wrapper img {
   font-size: 18px;
   color: gray;
   margin: 8px;
+}
+
+div.indicators div.second_header_score .CircularProgressbar {
+  /*
+   * This fixes an issue where the CircularProgressbar svg has
+   * 0 width inside a "display: flex" container, and thus not visible.
+   *
+   * If you're not using "display: flex", you can remove this style.
+   */
+  width: 50%;
+  height: 75px;
+}
+
+div.indicators div.second_header_score_circle .CircularProgressbar .CircularProgressbar-path {
+  stroke: #3e98c7;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease 0s;
+}
+
+div.indicators div.second_header_score_circle .CircularProgressbar .CircularProgressbar-trail {
+  stroke: #d6d6d6;
+}
+
+div.indicators div.second_header_score_circle .CircularProgressbar .CircularProgressbar-text {
+  fill: #3e98c7;
+  font-size: 20px;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+
+div.indicators div.second_header_score_circle .CircularProgressbar .CircularProgressbar-background {
+  fill: #d6d6d6;
+}
+
+div.indicators div.second_header_score_circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {
+  fill: #3e98c7;
+}
+
+div.indicators div.second_header_score_circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {
+  fill: #fff;
+}
+
+div.indicators div.second_header_score_circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {
+  stroke: #fff;
+}
+
+div.indicators div.second_header_score_circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
+  stroke: transparent;
 }

@@ -18,6 +18,19 @@ export function addObjectives(objectives){
     objectives:objectives,
   };
 }
+export function addDifficulty(difficulty){
+  return {
+    type:'ADD_DIFFICULTY',
+    difficulty:difficulty,
+  };
+}
+
+export function saveState(quiz){
+  return {
+    type:'SAVE_STATE',
+    quiz:quiz,
+  };
+}
 
 export function resetObjectives(objectives){
   return {

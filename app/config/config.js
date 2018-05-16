@@ -11,7 +11,11 @@ export let GLOBAL_CONFIG = {
       completion_threshold:0.5,
       score_threshold:0.6,
     },
-    n:3,
+    n:7,
+    difficulty:"fkjvbrkj",
+    comodin:true,
+    fichero:"http://localhost:8080/pregunta.xml",
+    titulo:"FyQ App",
   },
   production:{
     debug:false,

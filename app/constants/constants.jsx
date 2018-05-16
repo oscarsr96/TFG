@@ -4,6 +4,8 @@ export const INITIAL_STATE = {
     score:null,
     objectives:{},
     finished:false,
+    difficulty:null,
+
   },
   scorm:null,
   user_profile:{
@@ -12,4 +14,5 @@ export const INITIAL_STATE = {
     learner_preference:{},
   },
   wait_for_user_profile:false,
+  json:{},
 };

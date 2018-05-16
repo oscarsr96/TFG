@@ -11,6 +11,11 @@ function trackingReducer(state = {}, action){
       }
     }
     return newState;
+  case 'ADD_DIFFICULTY':
+    newState = JSON.parse(JSON.stringify(state));
+    newState.difficulty = action.difficulty;
+    return newState;
+
   case 'OBJECTIVE_ACCOMPLISHED':
     if(typeof action.objective_id === "undefined"){
       return state; // Objective id not defined
