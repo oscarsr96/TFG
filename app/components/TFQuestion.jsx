@@ -462,8 +462,8 @@ export default class TFQuestion extends React.Component {
       choices.push(
 
         // <TFQuestionChoice id={200 * i + 200} key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.Opciones[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.Opciones[i].Id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered}/>);
-    <div className="container_truefalse">
-      <div className={questionClassName1}>
+    <div key="9" className="container_truefalse">
+      <div key="1" className={questionClassName1}>
         <div className="botones">
           <RadioGroup
                 key={"MyQuestion_" + "question_choice_" + 0}
@@ -485,7 +485,7 @@ export default class TFQuestion extends React.Component {
         </div>
 
       </div>
-      <div className={questionClassName2}>
+      <div key="2" className={questionClassName2}>
         <div className="botones">
             <RadioGroup
                 key={"MyQuestion_" + "question_choice_" + 1}
@@ -516,8 +516,8 @@ export default class TFQuestion extends React.Component {
 
         // <TFQuestionChoice id={200 * i + 200} key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.Opciones[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.Opciones[i].Id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered}/>);
 
-    <div className="container_truefalse">
-      <div className={questionClassName1}>
+    <div key="99" className="container_truefalse">
+      <div key="1" className={questionClassName1}>
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 0}
@@ -539,7 +539,7 @@ export default class TFQuestion extends React.Component {
           </div>
         </div>
 
-        <div className={questionClassName2}>
+        <div key="2" className={questionClassName2}>
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 1}
@@ -561,7 +561,7 @@ export default class TFQuestion extends React.Component {
           </div>
         </div>
 
-        <div className={questionClassName3}>
+        <div key="3" className={questionClassName3}>
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 2}
@@ -592,8 +592,8 @@ export default class TFQuestion extends React.Component {
 
         // <TFQuestionChoice id={200 * i + 200} key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.Opciones[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.Opciones[i].Id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered}/>);
 
-      <div className="container_truefalse">
-      <div className={questionClassName1}>
+      <div key="999"className="container_truefalse">
+      <div key="1" className={questionClassName1}>
         <div className="botones">
       <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 0}
@@ -615,7 +615,7 @@ export default class TFQuestion extends React.Component {
           </div>
         </div>
 
-        <div className={questionClassName2}>
+        <div key="2" className={questionClassName2}>
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 1}
@@ -637,7 +637,7 @@ export default class TFQuestion extends React.Component {
           </div>
         </div>
 
-        <div className={questionClassName3}>
+        <div key="3" className={questionClassName3}>
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 2}
@@ -659,7 +659,7 @@ export default class TFQuestion extends React.Component {
           </div>
         </div>
 
-        <div className={questionClassName4}>
+        <div key="4" className={questionClassName4}>
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 3}
@@ -691,8 +691,8 @@ export default class TFQuestion extends React.Component {
     }
 
     return (
-      <div className="container">
-      <div className="question">
+      <div key="5"className="container">
+      <div key="6" className="question">
 
         <div className="question_pregunta">
 
@@ -710,7 +710,7 @@ export default class TFQuestion extends React.Component {
 
       </div>
 
-        <QuestionButtons comodin={false} clickComodin={this.comodinMitad.bind(this)} index={this.props.index} ref="questions" lastQuestion={this.props.isLastQuestion} I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
+        <QuestionButtons time={this.props.time} comodin={false} clickComodin={this.comodinMitad.bind(this)} index={this.props.index} ref="questions" lastQuestion={this.props.isLastQuestion} I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
       </div>
     );
   }

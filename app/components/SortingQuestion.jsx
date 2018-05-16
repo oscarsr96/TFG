@@ -191,7 +191,7 @@ export default class SortingQuestion extends React.Component {
 
         </div>
 
-        <QuestionButtons onResetQuiz={this.reset.bind(this)} comodin={this.props.comodin} index={this.props.index} ref="questions" lastQuestion={this.props.isLastQuestion} I18n={this.props.I18n} onAnswerQuestion={this.comprobarSorting.bind(this)} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
+        <QuestionButtons time={this.props.time} onResetQuiz={this.reset.bind(this)} comodin={this.props.comodin} index={this.props.index} ref="questions" lastQuestion={this.props.isLastQuestion} I18n={this.props.I18n} onAnswerQuestion={this.comprobarSorting.bind(this)} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
 
      </div>
     );

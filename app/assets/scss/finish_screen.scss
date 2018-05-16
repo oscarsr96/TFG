@@ -3,51 +3,69 @@ div.finish_screen h1 {
   padding: 10%;
   text-align: center;
 }
-div.finish_screen  .CircularProgressbar {
+div.finish.screen div.nota{
+  
+  display:inline;
+
+
+}
+div.finish.screen div.circle{
+  
+ float:center;
+}
+
+div.finish.screen div.nota h1{
+  
+ font-size: 20px;
+
+}
+div.finish_screen  div.circle .CircularProgressbar {
   /*
    * This fixes an issue where the CircularProgressbar svg has
    * 0 width inside a "display: flex" container, and thus not visible.
    *
    * If you're not using "display: flex", you can remove this style.
    */
-  width: 45%;
-  height: 50%;
+  width: 55%;
+  padding-left: 40%;
+  float:center;
+  height: auto;
 }
 
-div.finish_screen _circle .CircularProgressbar .CircularProgressbar-path {
-  stroke: #3e98c7;
+div.finish_screen _circle div.circle .CircularProgressbar .CircularProgressbar-path {
+  stroke: red;
   stroke-linecap: round;
   transition: stroke-dashoffset 0.5s ease 0s;
 }
 
-div.finish_screen _circle .CircularProgressbar .CircularProgressbar-trail {
-  stroke: #d6d6d6;
+div.finish_screen _circle div.circle .CircularProgressbar .CircularProgressbar-trail {
+  stroke: red;
 }
 
-div.finish_screen _circle .CircularProgressbar .CircularProgressbar-text {
-  fill: #3e98c7;
+div.finish_screen _circle div.circle .CircularProgressbar .CircularProgressbar-text {
+  fill: red;
   font-size: 20px;
   width: 70%;
   dominant-baseline: middle;
   text-anchor: middle;
 }
 
-div.finish_screen _circle .CircularProgressbar .CircularProgressbar-background {
-  fill: #d6d6d6;
+div.finish_screen _circle div.circle .CircularProgressbar .CircularProgressbar-background {
+  fill: red;
 }
 
-div.finish_screen _circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {
-  fill: #3e98c7;
+div.finish_screen _circle div.circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {
+  fill: red;
 }
 
-div.finish_screen _circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {
-  fill: #fff;
+div.finish_screen _circle div.circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {
+  fill: red;
 }
 
-div.finish_screen _circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {
-  stroke: #fff;
+div.finish_screen _circle div.circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {
+  stroke: red;
 }
 
-div.finish_screen _circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
+div.finish_screen _circle div.circle .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
   stroke: transparent;
 }

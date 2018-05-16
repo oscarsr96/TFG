@@ -24,8 +24,8 @@ export default class QuestionButtons extends React.Component {
 
       <div className="buttons">
         <button className="answerQuestion" onClick={this.props.onAnswerQuestion} disabled={disable_answer}>{this.props.I18n.getTrans("i.answer")}</button>
-        <button id="comodin" className="answerQuestion" disabled={this.props.answered} hidden={!this.props.comodin} onClick={this.props.clickComodin}>1:2</button>
-        <button className="answerQuestion" disabled><Countdown secondsRemaining={10} ref="contador" key={this.props.index} corregir={this.props.onAnswerQuestion}/></button>
+        <button id="comodin" className="botonQuestion" disabled={this.props.answered} hidden={!this.props.comodin} onClick={this.props.clickComodin}>1:2</button>
+        <button disabled={true} className="botonQuestion" disabled><Countdown secondsRemaining={this.props.time} ref="contador" key={this.props.index} corregir={this.props.onAnswerQuestion}/></button>
       </div>
       <div className="nextButton">
         <button className="nextQuestion" hidden={this.props.isLastQuestion} onClick={this.props.onNextQuestion} disabled={disable_next}>{this.props.allow_finish ? this.props.I18n.getTrans("i.finish_quiz") : this.props.I18n.getTrans("i.next")}</button>

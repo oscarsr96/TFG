@@ -3,6 +3,7 @@ import './../assets/scss/quiz.scss';
 import './../assets/scss/main.scss';
 import $ from 'jquery';
 
+
 import * as Utils from '../vendors/Utils.js';
 import {addObjectives, addDifficulty, resetObjectives, finishApp} from './../reducers/actions';
 
@@ -56,9 +57,9 @@ export default class Quiz extends React.Component {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    if(this.props.tracking.difficulty != null){
+    if(this.props.user_profile.learner_preference.difficulty != null){
 
-      switch (this.props.tracking.difficulty){
+      switch (this.props.user_profile.learner_preference.difficulty){
 
       case null:
         break;
@@ -317,16 +318,16 @@ export default class Quiz extends React.Component {
 
     switch (currentQuestion.Tipo){
     case "multichoice":
-      currentQuestionRender = (<MCQuestion quiz={this.state.quiz} comodin={this.props.config.comodin} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<MCQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={this.props.config.comodin} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "truefalse":
-      currentQuestionRender = (<TFQuestion quiz={this.state.quiz} comodin={this.props.config.comodin} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<TFQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={this.props.config.comodin} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "matching":
-      currentQuestionRender = (<SortingQuestion quiz={this.state.quiz} onResetQuiz={this.onResetQuiz.bind(this)} index={this.state.current_question_index} comodin={false} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<SortingQuestion time={this.props.config.tiempo} quiz={this.state.quiz} onResetQuiz={this.onResetQuiz.bind(this)} index={this.state.current_question_index} comodin={false} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "shortanswer":
-      currentQuestionRender = (<SHAQuestion quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<SHAQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     default:
       currentQuestionRender = "Question type not supported";

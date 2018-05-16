@@ -384,7 +384,7 @@ export class App extends React.Component {
       );
       if((this.props.wait_for_user_profile !== true) && (Object.keys(this.props.json).length > 0)){
         appContent = (
-          <Quiz dispatch={this.props.dispatch} json={this.props.json} user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n}/>
+          <Quiz dispatch={this.props.dispatch} json={this.props.json} user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG}  I18n={I18n}/>
         );
       }
     } else {
