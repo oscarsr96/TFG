@@ -7,23 +7,27 @@ export default class FinishScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      npta:"",
+      nota:"",
     };
   }
 
   componentDidMount(){
 
     if(this.props.tracking.score < 0.5){
-      this.setState({nota:"SUSPENSO"})
+      let mark = this.props.I18n.getTrans("i.finalMarkSuspenso");
+      this.setState({nota:mark})
       return;
     }else if(this.props.tracking.score <0.7){
-      this.setState({nota:"BIEN"});
+      let mark = this.props.I18n.getTrans("i.finalMarkBien");
+      this.setState({nota:mark})
       return;
     }else if(this.props.tracking.score <0.9){
-      this.setState({nota:"NOTABLE ALTO"});
+      let mark = this.props.I18n.getTrans("i.finalMarkNotable");
+      this.setState({nota:mark})
       return;
     }else{
-      this.setState({nota:"SOBRESALIENTE"});
+      let mark = this.props.I18n.getTrans("i.finalMarkSobresaliente");
+      this.setState({nota:mark})
       return;
     }
   }
@@ -71,7 +75,7 @@ export default class FinishScreen extends React.Component {
     return (
       <div className="finish_screen">
         <div className="nota">
-        <h1> Has acabado el quiz. Has sacado un {this.state.nota}</h1>
+        <h1>{this.state.nota}</h1>
         </div>
         <div className="circle">
         <CircularProgressbar percentage={(this.props.tracking.score * 100).toFixed(2)}/>

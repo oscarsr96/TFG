@@ -14,7 +14,7 @@ div.quizHeader p {
 
 div.container {
   height: auto;
-  width: 100%;
+  width: 85%;
   margin-top: 10%;
   max-width: 1263px;
   }
@@ -37,7 +37,7 @@ div.container div.question {
 
 div.container div.question div.container_truefalse div.truefalse{
   display: inline-block;
-  width:85%;
+  width:100%;
   background-color: white;
   margin-top: 1%;
   }
@@ -143,7 +143,7 @@ font-size:20px;
 }
 #respuestaSorting {
 
-margin-top: 5%;
+margin-top: 1%;
 text-align: left;
 margin-left: 1%;
 font-size:20px;
@@ -151,7 +151,7 @@ font-size:20px;
 }
 
 div.container div.question div.question_pregunta div.question_pregunta_enunciado h1 {
-  font-size: 25px;
+  font-size: 22px;
   margin-left: 10px;
   }
 
@@ -164,7 +164,7 @@ div.container div.question div.question_pregunta div.question_pregunta_progreso 
 
 
 div.container div.question div.question_pregunta div.question_pregunta_progreso h2 {
-  font-size: 25px;
+  font-size: 23px;
   margin-left: 10px;
   }
 
@@ -261,18 +261,18 @@ div.container div.question div.question_choice_sorting button {
 div.container div.question div.question_choice_correct {
   
   height: 20%;
-  width: 80%;
+  width: 84%;
   background: #bdffbd;
 }
 
 div.container div.question div.question_choice_incorrect {
   height: 20%;
-  width: 80%;
+  width: 84%;
   background: #ffc8c8;
 }
 div.container div.question div.question_choice_blank {
   height: 20%;
-  width: 80%;
+  width: 84%;
   background: yellow;
 }
 
@@ -282,13 +282,16 @@ div.container div.question div.question_choice_correct, div.question div.questio
 }
 
  div.container div.questionButtonsWrapper {
-  position: absolute;
+
+
+  position: relative;
   width: 100%;
-  padding: 30px;
-  margin-top: 10px;
+  padding: 5%;
+  vertical-align: bottom;
+  margin-bottom: 0%;
   margin-left: 3%;
   margin-right: 5%;
-  bottom: 0;
+  bottom: 0%;
 
 }
 
@@ -321,6 +324,17 @@ div.container div.questionButtonsWrapper div.buttons button.botonQuestion {
   border: 2px solid black;
   font-size: 15px;
   font-weight: bold;
+  margin-right: 1%;
+
+}
+div.container div.questionButtonsWrapper div.buttons button.comodinQuestion {
+  padding: 10px;
+  color: black;
+  background: white;
+  border: 2px solid black;
+  font-size: 15px;
+  font-weight: bold;
+  cursor:pointer;
   margin-right: 1%;
 
 }

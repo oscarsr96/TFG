@@ -438,7 +438,7 @@ export default class TFQuestion extends React.Component {
         if(this.state.selectedValue3 == ""){
           questionClassName3 = "truefalse_blanco";
         }
-        if(this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue4 == "true" && this.props.question.Opciones[3].Valor == 0){
+        if(this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 0){
           questionClassName3 = "truefalse_incorrecto";
         }
 

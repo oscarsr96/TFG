@@ -89,12 +89,38 @@ export class App extends React.Component {
             let h = x - 1;
 
             if(pregunta[w].$.type == "truefalse"){
+
+
+                if(  pregunta[w].difficulty === undefined){
+                customjson[h] = {};
+
+                customjson[h].Tipo = pregunta[w].$.type;
+
+                customjson[h].Enunciado = pregunta[w].name[0].text[0];
+                customjson[h].Opciones = [];
+
+                for(let y = 0; y < questionSizes[x - 1]; y++){
+
+                  let z = primeraOpcion(x) + y;
+                  let i = y + 1;
+
+                  customjson[h].Opciones[y] = {};
+                  customjson[h].Opciones[y].Id = i;
+                  customjson[h].Opciones[y].Texto = pregunta[z].questiontext[0].text[0];
+                  customjson[h].Opciones[y].Valor = pregunta[z].answer[0].$.fraction;
+
+                }
+            }
               // Evaluar dificultad
+              else if( pregunta[w].difficulty !== undefined){
+
               if(pregunta[w].difficulty[0] == "Basic"){
 
                 customjson[h] = {};
 
                 customjson[h].Dificultad = pregunta[w].difficulty[0];
+               
+
                 customjson[h].Tipo = pregunta[w].$.type;
 
                 customjson[h].Enunciado = pregunta[w].name[0].text[0];
@@ -179,8 +205,9 @@ export class App extends React.Component {
 
                 }
               }
-
-            }// fin truefalse
+            } 
+          }
+            // fin truefalse
             else if(pregunta[w].$.type == "multichoice" || pregunta[w].$.type == "shortanswer"){
 
               let tipo = "";
@@ -190,12 +217,33 @@ export class App extends React.Component {
                 tipo = "Shortanswer";
               }
 
+
+              if( pregunta[w].difficulty === undefined){
+                  customjson[h] = {};
+
+                customjson[h].Tipo = pregunta[w].$.type;
+
+                customjson[h].Enunciado = pregunta[w].name[0].text[0];
+                customjson[h].Opciones = [];
+
+                for(let y = 0; y < pregunta[w].answer.length; y++){
+
+                  let i = y + 1;
+                  customjson[h].Opciones[y] = {};
+                  customjson[h].Opciones[y].Id = i;
+                  customjson[h].Opciones[y].Texto = pregunta[w].answer[y].text[0];
+                  customjson[h].Opciones[y].Valor = pregunta[w].answer[y].$.fraction;
+
+                }
+             }
+
+              else if( pregunta[w].difficulty !== undefined){
               if(pregunta[w].difficulty[0] == "Basic"){
 
                 customjson[h] = {};
 
                 customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjso[h].Tipo = pregunta[w].$.type;
+                customjson[h].Tipo = pregunta[w].$.type;
 
                 customjson[h].Enunciado = pregunta[w].name[0].text[0];
                 customjson[h].Opciones = [];
@@ -271,11 +319,31 @@ export class App extends React.Component {
 
                 }
               }
-
+             } 
             }
 
             else if(pregunta[w].$.type == "matching"){
 
+              if(pregunta[w].difficulty === undefined){
+                customjson[h] = {};
+
+                customjson[h].Tipo = pregunta[w].$.type;
+
+                customjson[h].Enunciado = pregunta[w].name[0].text[0];
+                customjson[h].Opciones = [];
+
+                for(let y = 0; y < pregunta[w].subquestion.length; y++){
+
+                  let i = y + 1;
+                  customjson[h].Opciones[y] = {};
+                  customjson[h].Opciones[y].Id = i;
+                  customjson[h].Opciones[y].Texto = pregunta[w].subquestion[y].text[0];
+                  customjson[h].Opciones[y].Valor = pregunta[w].subquestion[y].answer[0].text[0];
+                }
+          }
+
+
+              else if( pregunta[w].difficulty !== undefined){
               if(pregunta[w].difficulty[0] == "Basic"){
 
                 customjson[h] = {};
@@ -357,6 +425,7 @@ export class App extends React.Component {
               }
 
             }
+          } 
 
           }
 

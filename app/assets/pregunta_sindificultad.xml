@@ -6,7 +6,6 @@
         </category>
         </question>
         <question type="truefalse">
-		<difficulty>Basic</difficulty>
         <name>
         <text>­Si un coche circula a 25m/s...</text>
         </name>
@@ -68,7 +67,6 @@
         </category>
         </question>
         <question type="truefalse">
-		<difficulty>Basic</difficulty>
         <name>
         <text>­Si un coche circula a 72km/h...</text>
         </name>
@@ -130,7 +128,6 @@
         </category>
         </question>
         <question type="multichoice">
-		<difficulty>Basic</difficulty>
         <name>
         <text>­Señala las opciones correctas</text>
         </name>
@@ -155,7 +152,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Basic</difficulty>
         <name>
         <text>­Para pasar de m/s a km/h...</text>
         </name>
@@ -189,7 +185,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Medium</difficulty>
         <name>
         <text>­Si un cuerpo mantiene una velocidad constante:</text>
         </name>
@@ -251,7 +246,6 @@
         </category>
         </question>
         <question type="shortanswer">
-		<difficulty>Basic</difficulty>
         <name>
         <text>­¿Cuál es el símbolo del primer elemento de la tabla periódica?</text>
         </name>
@@ -268,7 +262,6 @@
       </category>
       </question>
       <question type="matching">
-	  <difficulty>Basic</difficulty>
       <name>
       <text>­Ordena las velocidades de mayor a menor</text>
       </name>
@@ -307,7 +300,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Basic</difficulty>
         <name>
         <text>­Cuando un cuerpo resbala en una superficie</text>
         </name>
@@ -369,7 +361,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Medium</difficulty>
         <name>
         <text>­Segun la segunda Ley de Newton</text>
         </name>
@@ -412,7 +403,6 @@
         </answer>
         </question>
         <question type="truefalse">
-		<difficulty>Basic</difficulty>
         <name>
         <text>­Segun la segunda Ley de Newton</text>
         </name>
@@ -432,7 +422,6 @@
         </category>
         </question>
         <question type="multichoice">
-        <difficulty>Medium</difficulty>
         <name>
         <text>­Señala las opciones correctas</text>
         </name>
@@ -457,7 +446,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Medium</difficulty>
         <name>
         <text>­Para pasar de grados celsius a kelvin...</text>
         </name>
@@ -491,7 +479,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>High</difficulty>
         <name>
         <text>­En una reaccion quimica:</text>
         </name>
@@ -553,7 +540,6 @@
         </category>
         </question>
         <question type="shortanswer">
-        <difficulty>Medium</difficulty>
         <name>
         <text>­¿Que letra representa el numero masico?</text>
         </name>
@@ -573,7 +559,6 @@
       <name>
       <text>­Ordena los elementos por su aparicion en la tabla periodica</text>
       </name>
-      <difficulty>Medium</difficulty>
       <questiontext>
       <text>­Ordena los elementos por su aparicion en la tabla periodica</text>
       </questiontext>
@@ -609,7 +594,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>High</difficulty>
         <name>
         <text>­Una disolucion...</text>
         </name>
@@ -671,7 +655,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>High</difficulty>
         <name>
         <text>­Un atomo que cede electrones</text>
         </name>
@@ -733,7 +716,6 @@
         </category>
         </question>
         <question type="multichoice">
-        <difficulty>Advanced</difficulty>
         <name>
         <text>­Señala las opciones correctas</text>
         </name>
@@ -758,7 +740,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>High</difficulty>
         <name>
         <text>­Una reaccion de combustion</text>
         </name>
@@ -792,7 +773,6 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Advanced</difficulty>
         <name>
         <text>­La masa molar de un compuesto:</text>
         </name>
@@ -854,7 +834,6 @@
         </category>
         </question>
         <question type="shortanswer">
-        <difficulty>Advanced</difficulty>
         <name>
         <text>­¿Cuántos neutrones tiene el hidrogeno?</text>
         </name>
@@ -874,7 +853,6 @@
       <name>
       <text>­Ordena los siguientes atomos de mayor a menor electronegatividad</text>
       </name>
-      <difficulty>Advanced</difficulty>
       <questiontext>
       <text>­Ordena los siguientes atomos de mayor a menor electronegatividad</text>
       </questiontext>
@@ -905,4 +883,3 @@
       </subquestion>
       </question>
       </quiz>
-

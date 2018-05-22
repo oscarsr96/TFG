@@ -23,9 +23,16 @@ export default class Header extends React.Component {
         loggedText = (this.props.I18n.getTrans("i.logged_as") + " " + this.props.user_profile.name);
       }
       if(typeof this.props.user_profile.learner_preference === "object"){
-        if(typeof this.props.user_profile.learner_preference.difficulty === "number"){
+
+        if(this.props.tracking.difficulty === null){
+          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + "no contemplada");
+        }
+
+        else /*(typeof this.props.user_profile.learner_preference.difficulty === "number")*/{
           trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + this.props.tracking.difficulty);
         }
+
+
       }
     }
 

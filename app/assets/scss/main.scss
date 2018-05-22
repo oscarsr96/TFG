@@ -63,13 +63,11 @@ div.indicators div.second_header_progress p {
 
 div.indicators div.second_header_score  {
  width: 33%;
- height: fit-content;
  float: right;
 }
 
 div.indicators div.second_header_score div.second_header_score_text{
  width:100%;
- height: fit-content;
 }
 
 div.indicators div.second_header_score div.second_header_score_text p {
@@ -78,7 +76,6 @@ div.indicators div.second_header_score div.second_header_score_text p {
 
 div.indicators div.second_header_score div.second_header_score_circle{
  width: 0%;
- height: fit-content;
  float: right;
 }
 
@@ -86,7 +83,6 @@ div.indicators div.second_header_score div.second_header_score_circle{
 
 div.indicators div.second_header_difficulty  {
  width: 33%;
- height: fit-content;
  float: right;
 }
 
@@ -95,7 +91,7 @@ div.indicators div.second_header_difficulty p {
 }
 
 div.indicators {
-  width: fit-content;
+  width: 100%;
   height: 15%;
   background-color: aquamarine;
   margin-left: auto;
