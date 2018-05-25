@@ -46,7 +46,7 @@ export default class Quiz extends React.Component {
                 advancedQuiz.push(quiz[i]);
               }
         }
-          else if (quiz[i].Dificultad === undefined){
+          else if (typeof quiz[i].Dificultad === "undefined"){
                 noDiffQuiz.push(quiz[i]);
               }
 
@@ -66,7 +66,7 @@ export default class Quiz extends React.Component {
    
 
 
-      if(typeof this.props.user_profile.learner_preference.difficulty !== "undefined"){
+      if(typeof this.props.user_profile.learner_preference.difficulty !== "undefined" && noDiffQuiz.length == 0){
         console.log("La dificultad lms no es undefined")
 
       switch (this.props.user_profile.learner_preference.difficulty){
@@ -127,10 +127,11 @@ export default class Quiz extends React.Component {
               }
       } else {
           console.log("He entrado en el else de lms config undefined")
-        if( this.props.config.difficulty === undefined){
+          console.log(noDiffQuiz.length)
+        if( noDiffQuiz.length != 0){
           questions = noDiffQuiz;
         }
-        else if( this.props.config.difficulty !== undefined){
+        else if( this.props.config.difficulty !== undefined && noDiffQuiz.length==0){
             switch (this.props.config.difficulty){
             case "Basic":
               questions = basicQuiz;
@@ -283,12 +284,6 @@ export default class Quiz extends React.Component {
     this.state = {
       quiz:questions,
       current_question_index:1,
-      basicQuiz: basicQuiz,
-      mediumQuiz:mediumQuiz,
-      highQuiz:highQuiz,
-      advancedQuiz:advancedQuiz,
-      noDiffQuestions: noDiffQuiz,
-
     };
   }
   componentDidMount(){
@@ -347,7 +342,7 @@ export default class Quiz extends React.Component {
       currentQuestionRender = (<MCQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={this.props.config.comodin} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "truefalse":
-      currentQuestionRender = (<TFQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={this.props.config.comodin} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<TFQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "matching":
       currentQuestionRender = (<SortingQuestion time={this.props.config.tiempo} quiz={this.state.quiz} onResetQuiz={this.onResetQuiz.bind(this)} index={this.state.current_question_index} comodin={false} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);

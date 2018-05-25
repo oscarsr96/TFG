@@ -24,8 +24,8 @@ export default class Header extends React.Component {
       }
       if(typeof this.props.user_profile.learner_preference === "object"){
 
-        if(this.props.tracking.difficulty === null){
-          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + "no contemplada");
+        if(this.props.tracking.difficulty === undefined || this.props.tracking.difficulty === null){
+          trackingTexts.push("");
         }
 
         else /*(typeof this.props.user_profile.learner_preference.difficulty === "number")*/{

@@ -14,7 +14,7 @@ export let GLOBAL_CONFIG = {
     n:7,
     difficulty:"a",
     comodin:true,
-    fichero:"http://localhost:8080/assets/pregunta.xml",
+    fichero:"/assets/pregunta_sindificultad.xml",
     titulo:"FyQ App",
     tiempo: 15,
   },
