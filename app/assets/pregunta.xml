@@ -140,13 +140,13 @@
         <shuffleanswers>0</shuffleanswers>
         <single>false</single>
         <answer fraction="0">
-        <text>­La velocidad instantanea de un cuerpo siempre coincide con su velocidad media</text>
+        <text>­La velocidad instantánea de un cuerpo siempre coincide con su velocidad media</text>
         </answer>
         <answer fraction="100">
-        <text>­La velocidad instantanea puede ser mayor que la velocidad media</text>
+        <text>­La velocidad instantánea puede ser mayor que la velocidad media</text>
         </answer>
         <answer fraction="100">
-        <text>­La velocidad media puede ser menor que la velocidad instantanea</text>
+        <text>­La velocidad media puede ser menor que la velocidad instantánea</text>
         </answer>
         </question>
         <question type="category">
@@ -371,7 +371,7 @@
         <question type="truefalse">
         <difficulty>Medium</difficulty>
         <name>
-        <text>­Segun la segunda Ley de Newton</text>
+        <text>­Según la segunda Ley de Newton</text>
         </name>
         <questiontext>
         <text>­La fuerza que experimenta un cuerpo es proporcional a su masa</text>
@@ -442,10 +442,10 @@
         <shuffleanswers>0</shuffleanswers>
         <single>false</single>
         <answer fraction="100">
-        <text>­La tercera Ley de Newton es conocida como la Ley de Accion-Reaccion</text>
+        <text>­La tercera Ley de Newton es conocida como la Ley de Acción-Reacción</text>
         </answer>
         <answer fraction="0">
-        <text>­La primera Ley de Newton establece la relacion entre fuerza y aceleracion</text>
+        <text>­La primera Ley de Newton establece la relación entre fuerza y aceleración</text>
         </answer>
         <answer fraction="100">
         <text>­La primera Ley de Newton describe la inercia </text>
@@ -493,7 +493,7 @@
         <question type="truefalse">
         <difficulty>High</difficulty>
         <name>
-        <text>­En una reaccion quimica:</text>
+        <text>­En una reacción química:</text>
         </name>
         <questiontext>
         <text>­Los productos se convierten en reactivos</text>
@@ -555,7 +555,7 @@
         <question type="shortanswer">
         <difficulty>Medium</difficulty>
         <name>
-        <text>­¿Que letra representa el numero masico?</text>
+        <text>­¿Qué letra representa el número másico?</text>
         </name>
         <questiontext>
         <text>­¿Que letra representa el numero masico?</text>
@@ -571,11 +571,11 @@
       </question>
       <question type="matching">
       <name>
-      <text>­Ordena los elementos por su aparicion en la tabla periodica</text>
+      <text>­Ordena los elementos por su aparición en la tabla periódica</text>
       </name>
       <difficulty>Medium</difficulty>
       <questiontext>
-      <text>­Ordena los elementos por su aparicion en la tabla periodica</text>
+      <text>­Ordena los elementos por su aparición en la tabla periodica</text>
       </questiontext>
       <shuffleanswers>false</shuffleanswers>
       <subquestion>
@@ -611,10 +611,10 @@
         <question type="truefalse">
         <difficulty>High</difficulty>
         <name>
-        <text>­Una disolucion...</text>
+        <text>­Una disolución...</text>
         </name>
         <questiontext>
-        <text>­Tiene un valor de concentracion en masa constante</text>
+        <text>­Tiene un valor de concentración en masa constante</text>
         </questiontext>
         <answer fraction="100">
         <text>true</text>
@@ -628,7 +628,7 @@
         <text>­Una disolucion...</text>
         </name>
         <questiontext>
-        <text>­Tiene un valor de concentracion en masa variable</text>
+        <text>­Tiene un valor de concentración en masa variable</text>
         </questiontext>
         <answer fraction="0">
         <text>true</text>
@@ -642,7 +642,7 @@
         <text>­Una disolucion...</text>
         </name>
         <questiontext>
-        <text>­Puede tener mas de un disolvente</text>
+        <text>­Puede tener más de un disolvente</text>
         </questiontext>
         <answer fraction="0">
         <text>true</text>
@@ -656,7 +656,7 @@
         <text>­Una disolucion...</text>
         </name>
         <questiontext>
-        <text>­Es una mezcla heterogenea</text>
+        <text>­Es una mezcla heterogénea</text>
         </questiontext>
         <answer fraction="0">
         <text>true</text>
@@ -673,10 +673,10 @@
         <question type="truefalse">
         <difficulty>High</difficulty>
         <name>
-        <text>­Un atomo que cede electrones</text>
+        <text>­Un átomo que cede electrones</text>
         </name>
         <questiontext>
-        <text>­Reduce su numero atomico</text>
+        <text>­Reduce su número atómico</text>
         </questiontext>
         <answer fraction="0">
         <text>true</text>
@@ -690,7 +690,7 @@
         <text>­Un atomo que cede electrones</text>
         </name>
         <questiontext>
-        <text>­Aumenta su numero masico</text>
+        <text>­Aumenta su número másico</text>
         </questiontext>
         <answer fraction="0">
         <text>true</text>
@@ -704,7 +704,7 @@
         <text>­Un atomo que cede electrones</text>
         </name>
         <questiontext>
-        <text>­Es un cation</text>
+        <text>­Es un catión</text>
         </questiontext>
         <answer fraction="100">
         <text>true</text>
@@ -743,13 +743,13 @@
         <shuffleanswers>0</shuffleanswers>
         <single>false</single>
         <answer fraction="0">
-        <text>­Un atomo que gana electrones es un metal</text>
+        <text>­Un átomo que gana electrones es un metal</text>
         </answer>
         <answer fraction="100">
-        <text>­Un atomo que cede electrones es un metal</text>
+        <text>­Un átomo que cede electrones es un metal</text>
         </answer>
         <answer fraction="100">
-        <text>­El numero de protones se mantiene siempre constante cuando se forman iones</text>
+        <text>­El número de protones se mantiene siempre constante cuando se forman iones</text>
         </answer>
         </question>
         <question type="category">
@@ -760,7 +760,7 @@
         <question type="truefalse">
         <difficulty>High</difficulty>
         <name>
-        <text>­Una reaccion de combustion</text>
+        <text>­Una reacción de combustión</text>
         </name>
         <questiontext>
         <text>­Libera CO2</text>
@@ -856,10 +856,10 @@
         <question type="shortanswer">
         <difficulty>Advanced</difficulty>
         <name>
-        <text>­¿Cuántos neutrones tiene el hidrogeno?</text>
+        <text>­¿Cuántos neutrones tiene el hidrógeno?</text>
         </name>
         <questiontext>
-        <text>­¿Cuántos neutrones tiene el hidrogeno?</text>
+        <text>­¿Cuántos neutrones tiene el hidrógeno?</text>
         </questiontext>
         <answer fraction="100">
         <text>0</text>
@@ -872,7 +872,7 @@
       </question>
       <question type="matching">
       <name>
-      <text>­Ordena los siguientes atomos de mayor a menor electronegatividad</text>
+      <text>­Ordena los siguientes átomos de mayor a menor electronegatividad</text>
       </name>
       <difficulty>Advanced</difficulty>
       <questiontext>
