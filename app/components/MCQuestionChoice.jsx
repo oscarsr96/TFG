@@ -14,7 +14,7 @@ export default class MCQuestionChoice extends React.Component {
         } else {
           questionClassName += " question_choice_incorrect";
         }
-      } else if(this.props.choice.Valor == 100){
+      } else {
         questionClassName += " question_choice_blank";
       }
     }

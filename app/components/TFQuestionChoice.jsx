@@ -19,12 +19,12 @@ export default class TFQuestionChoice extends React.Component {
     let showCorrection = (this.props.questionAnswered);
     if(showCorrection){
       if(this.props.checked){
-        if(this.props.choice.Valor == 100){
+        if(this.props.choice.Valor === 100){
           questionClassName += " question_choice_correct";
         } else {
           questionClassName += " question_choice_incorrect";
         }
-      } else if(this.props.choice.Valor == 100){
+      } else if(this.props.choice.Valor === 100){
         questionClassName += " question_choice_blank";
       }
     }

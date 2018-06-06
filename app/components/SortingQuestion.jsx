@@ -40,7 +40,7 @@ export default class SortingQuestion extends React.Component {
   }
   boton1(){
     let newValue = this.state.boton1 + 1;
-    if(newValue == 5){
+    if(newValue === 5){
       this.setState({boton1:1});
       return;
     }
@@ -48,7 +48,7 @@ export default class SortingQuestion extends React.Component {
   }
   boton2(){
     let newValue = this.state.boton2 + 1;
-    if(newValue == 5){
+    if(newValue === 5){
       this.setState({boton2:1});
       return;
     }
@@ -56,7 +56,7 @@ export default class SortingQuestion extends React.Component {
   }
   boton3(){
     let newValue = this.state.boton3 + 1;
-    if(newValue == 5){
+    if(newValue === 5){
       this.setState({boton3:1});
       return;
     }
@@ -64,7 +64,7 @@ export default class SortingQuestion extends React.Component {
   }
   boton4(){
     let newValue = this.state.boton4 + 1;
-    if(newValue == 5){
+    if(newValue === 5){
       this.setState({boton4:1});
       return;
     }

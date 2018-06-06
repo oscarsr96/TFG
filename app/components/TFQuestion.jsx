@@ -18,6 +18,10 @@ export default class TFQuestion extends React.Component {
       selectedValue2:"",
       selectedValue3:"",
       selectedValue4:"",
+      correccionBlanco1: false,
+      correccionBlanco2: false,
+      correccionBlanco3:false,
+      correccionBlanco4:false,
     };
   }
   componentWillUpdate(prevProps, prevState){
@@ -28,29 +32,14 @@ export default class TFQuestion extends React.Component {
   handleChoiceChange(choice){
     let newSelectedChoices = Object.assign([], this.state.selected_choices_ids);
     let indexOf = newSelectedChoices.indexOf(choice.Id);
-    if(indexOf === -1){
+    if(indexOf == -1){
       newSelectedChoices.push(choice.Id);
     } else {
       newSelectedChoices.splice(indexOf, 1);
     }
     this.setState({selected_choices_ids:newSelectedChoices});
   }
-  comodinMitad(){
-
-    document.getElementById("comodin").disabled = true;
-
-    let nChoices = this.props.question.Opciones.length;
-    let nFalses = 0;
-
-    for(let i = 0; i < nChoices; i++){
-      if(this.props.question.Opciones[i].Valor == 0 && nFalses != 2){
-        document.getElementById(200 * i + 200).style = "display: none";
-        nFalses++;
-      }
-
-    }
-
-  }
+  
 
   onAnswerQuestion(){
 
@@ -77,7 +66,9 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue1:"false", correccionBlanco1: true});
         }
+
       }
 
       if(this.props.question.Opciones[0].Valor == 100){
@@ -88,6 +79,7 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue1:"true", correccionBlanco1: true});
         }
 
       }
@@ -100,6 +92,7 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue2:"false", correccionBlanco2: true});
         }
       }
 
@@ -111,6 +104,7 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue2:"true", correccionBlanco2: true});
         }
 
       }
@@ -126,6 +120,7 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue1:"false", correccionBlanco1: true});
         }
       }
 
@@ -137,6 +132,7 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue1:"true", correccionBlanco1: true});
         }
       }
 
@@ -148,6 +144,7 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue2:"false", correccionBlanco2: true});
         }
       }
 
@@ -159,6 +156,7 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue2:"true", correccionBlanco2: true});
         }
       }
 
@@ -170,6 +168,7 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue3:"false", correccionBlanco3: true});
         }
       }
 
@@ -181,6 +180,7 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue3:"true", correccionBlanco3: true});
         }
       }
       break;
@@ -194,6 +194,7 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue1:"false", correccionBlanco1: true});
         }
       }
 
@@ -205,6 +206,7 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue1:"true", correccionBlanco1: true});
         }
       }
 
@@ -216,6 +218,7 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue2:"false", correccionBlanco2: true});
         }
       }
 
@@ -227,6 +230,7 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue2:"true", correccionBlanco2: true});
         }
       }
 
@@ -238,6 +242,7 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue3:"false", correccionBlanco3: true});
         }
       }
 
@@ -249,6 +254,7 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue3:"true", correccionBlanco3: true});
         }
       }
 
@@ -260,6 +266,7 @@ export default class TFQuestion extends React.Component {
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue4:"false", correccionBlanco4: true});
         }
       }
 
@@ -271,29 +278,18 @@ export default class TFQuestion extends React.Component {
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
+          this.setState({selectedValue4:"true", correccionBlanco4: true});
         }
       }
       break;
 
     }
 
-    /* for(let i = 0; i < nChoices; i++){
-      let choice = this.props.question.Opciones[i];
-      if(this.state.selected_choices_ids.indexOf(choice.Id) !== -1){
-        // Answered choice
-        if(choice.Valor == 100){
-          correctAnswers += 1;
-        } else {
-          incorrectAnswers += 1;
-        }
-      } else {
-        blankAnswers += 1;
-      }
-    }*/
+ 
 
     let totalCorrectAnswers = 0;
     let scorePercentage = 0;
-    if(blankAnswers != 0){
+    if(blankAnswers !== 0){
       scorePercentage = 0;
 
     } else {
@@ -330,14 +326,9 @@ export default class TFQuestion extends React.Component {
     let nChoices = this.props.question.Opciones.length;
     let nFalses = 0;
 
-    /* for(let i = 0; i < nChoices; i++){
-      if(this.props.question.Opciones[i].Valor == 0 && nFalses != 2){
-        document.getElementById(200 * i + 200).style = "display: inline-block, background: white";
-        nFalses++;
-      }
-
-    }*/
+  
     this.setState({selectedValue1:"", selectedValue2:"", selectedValue3:"", selectedValue4:""});
+    this.setState({correccionBlanco1:false, correccionBlanco2:false, correccionBlanco3:false, correccionBlanco4:false});
   }
   render(){
 
@@ -355,23 +346,35 @@ export default class TFQuestion extends React.Component {
       if(this.props.question.Opciones.length == 2){
 
         if(this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 0){
+          if(this.state.correccionBlanco1){
+            questionClassName1="truefalse_blanco"
+          }else{
           questionClassName1 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue1 == ""){
-          questionClassName1 = "truefalse_blanco";
-        }
+      
         if(this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 0){
+          if(this.state.correccionBlanco1){
+            questionClassName1="truefalse_blanco"
+          }else{
           questionClassName1 = "truefalse_incorrecto";
+         }
         }
 
         if(this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 0){
+          if(this.state.correccionBlanco2){
+            questionClassName2="truefalse_blanco"
+          }else{
           questionClassName2 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue1 == ""){
-          questionClassName2 = "truefalse_blanco";
-        }
+       
         if(this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 0){
+          if(this.state.correccionBlanco2){
+            questionClassName2="truefalse_blanco"
+          }else{
           questionClassName2 = "truefalse_incorrecto";
+         }
         }
 
       }
@@ -379,33 +382,51 @@ export default class TFQuestion extends React.Component {
       if(this.props.question.Opciones.length == 3){
 
         if(this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 0){
+          if(this.state.correccionBlanco1){
+            questionClassName1="truefalse_blanco"
+          }else{
           questionClassName1 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue1 == ""){
-          questionClassName1 = "truefalse_blanco";
-        }
+        
         if(this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 0){
+          if(this.state.correccionBlanco1){
+            questionClassName1="truefalse_blanco"
+          }else{
           questionClassName1 = "truefalse_incorrecto";
+         }
         }
 
         if(this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 0){
+          if(this.state.correccionBlanco2){
+            questionClassName2="truefalse_blanco"
+          }else{
           questionClassName2 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue1 == ""){
-          questionClassName2 = "truefalse_blanco";
-        }
+        
         if(this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 0){
+          if(this.state.correccionBlanco2){
+            questionClassName2="truefalse_blanco"
+          }else{
           questionClassName2 = "truefalse_incorrecto";
+         }
         }
 
         if(this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 0){
+          if(this.state.correccionBlanco3){
+            questionClassName3="truefalse_blanco"
+          }else{
           questionClassName3 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue3 == ""){
-          questionClassName3 = "truefalse_blanco";
-        }
+        
         if(this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 0){
+          if(this.state.correccionBlanco3){
+            questionClassName3="truefalse_blanco"
+          }else{
           questionClassName3 = "truefalse_incorrecto";
+         }
         }
 
       }
@@ -413,43 +434,67 @@ export default class TFQuestion extends React.Component {
       if(this.props.question.Opciones.length == 4){
 
         if(this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 0){
+          if(this.state.correccionBlanco1){
+            questionClassName1="truefalse_blanco"
+          }else{
           questionClassName1 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue1 == ""){
-          questionClassName1 = "truefalse_blanco";
-        }
+        
         if(this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 0){
+          if(this.state.correccionBlanco1){
+            questionClassName1="truefalse_blanco"
+          }else{
           questionClassName1 = "truefalse_incorrecto";
+         }
         }
 
         if(this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 0){
+          if(this.state.correccionBlanco2){
+            questionClassName2="truefalse_blanco"
+          }else{
           questionClassName2 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue2 == ""){
-          questionClassName2 = "truefalse_blanco";
-        }
+       
         if(this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 0){
+          if(this.state.correccionBlanco2){
+            questionClassName2="truefalse_blanco"
+          }else{
           questionClassName2 = "truefalse_incorrecto";
+         }
         }
 
         if(this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 0){
+          if(this.state.correccionBlanco3){
+            questionClassName3="truefalse_blanco"
+          }else{
           questionClassName3 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue3 == ""){
-          questionClassName3 = "truefalse_blanco";
-        }
+       
         if(this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 0){
+          if(this.state.correccionBlanco3){
+            questionClassName3="truefalse_blanco"
+          }else{
           questionClassName3 = "truefalse_incorrecto";
+         }
         }
 
         if(this.state.selectedValue4 == "true" && this.props.question.Opciones[3].Valor == 100 || this.state.selectedValue4 == "false" && this.props.question.Opciones[3].Valor == 0){
+          if(this.state.correccionBlanco4){
+            questionClassName4="truefalse_blanco"
+          }else{
           questionClassName4 = "truefalse_correcto";
+         }
         }
-        if(this.state.selectedValue4 == ""){
-          questionClassName4 = "truefalse_blanco";
-        }
+       
         if(this.state.selectedValue4 == "false" && this.props.question.Opciones[3].Valor == 100 || this.state.selectedValue4 == "true" && this.props.question.Opciones[3].Valor == 0){
+          if(this.state.correccionBlanco4){
+            questionClassName4="truefalse_blanco"
+          }else{
           questionClassName4 = "truefalse_incorrecto";
+         }
         }
 
       }
@@ -463,18 +508,19 @@ export default class TFQuestion extends React.Component {
 
         // <TFQuestionChoice id={200 * i + 200} key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.Opciones[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.Opciones[i].Id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered}/>);
     <div key="9" className="container_truefalse">
-      <div key="1" className={questionClassName1}>
+      <div id="pregunta0" key="1" className={questionClassName1}>
         <div className="botones">
           <RadioGroup
                 key={"MyQuestion_" + "question_choice_" + 0}
+                id={"MyQuestion_" + "question_choice_" + 0}
                 selectedValue={this.state.selectedValue1}
                 onChange={this.handleChange.bind(this)}>
 
               <label>
-                <Radio disabled={this.state.answered} value="true" />V
+                <Radio  disabled={this.state.answered} value="true" />V
               </label>
               <label>
-               <Radio disabled={this.state.answered} value="false" />F
+               <Radio  disabled={this.state.answered} value="false" />F
               </label>
 
             </RadioGroup>
@@ -489,6 +535,7 @@ export default class TFQuestion extends React.Component {
         <div className="botones">
             <RadioGroup
                 key={"MyQuestion_" + "question_choice_" + 1}
+                id={"MyQuestion_" + "question_choice_" + 1}
                 selectedValue={this.state.selectedValue2}
                 onChange={this.handleChange2.bind(this)}>
 
@@ -521,14 +568,15 @@ export default class TFQuestion extends React.Component {
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 0}
+            id={"MyQuestion_" + "question_choice_" + 0}
             selectedValue={this.state.selectedValue1}
             onChange={this.handleChange.bind(this)}>
 
           <label>
-            <Radio disabled={this.state.answered} value="true" />V
+            <Radio  disabled={this.state.answered} value="true" />V
           </label>
           <label>
-           <Radio disabled={this.state.answered} value="false" />F
+           <Radio  disabled={this.state.answered} value="false" />F
           </label>
 
         </RadioGroup>
@@ -543,6 +591,7 @@ export default class TFQuestion extends React.Component {
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 1}
+            id={"MyQuestion_" + "question_choice_" + 1}
             selectedValue={this.state.selectedValue2}
             onChange={this.handleChange2.bind(this)}>
 
@@ -565,6 +614,7 @@ export default class TFQuestion extends React.Component {
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 2}
+            id={"MyQuestion_" + "question_choice_" + 2}
             selectedValue={this.state.selectedValue3}
             onChange={this.handleChange3.bind(this)}>
 
@@ -597,6 +647,7 @@ export default class TFQuestion extends React.Component {
         <div className="botones">
       <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 0}
+            id={"MyQuestion_" + "question_choice_" + 0}
             selectedValue={this.state.selectedValue1}
             onChange={this.handleChange.bind(this)}>
 
@@ -619,6 +670,7 @@ export default class TFQuestion extends React.Component {
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 1}
+            id={"MyQuestion_" + "question_choice_" + 1}
             selectedValue={this.state.selectedValue2}
             onChange={this.handleChange2.bind(this)}>
 
@@ -641,6 +693,7 @@ export default class TFQuestion extends React.Component {
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 2}
+            id={"MyQuestion_" + "question_choice_" + 2}
             selectedValue={this.state.selectedValue3}
             onChange={this.handleChange3.bind(this)}>
 
@@ -663,6 +716,7 @@ export default class TFQuestion extends React.Component {
         <div className="botones">
         <RadioGroup
             key={"MyQuestion_" + "question_choice_" + 3}
+            id={"MyQuestion_" + "question_choice_" + 3}
             selectedValue={this.state.selectedValue4}
             onChange={this.handleChange4.bind(this)}>
 
@@ -710,7 +764,7 @@ export default class TFQuestion extends React.Component {
 
       </div>
 
-        <QuestionButtons time={this.props.time} comodin={false} clickComodin={this.comodinMitad.bind(this)} index={this.props.index} ref="questions" lastQuestion={this.props.isLastQuestion} I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
+        <QuestionButtons time={this.props.time} comodin={false}  index={this.props.index} ref="questions" lastQuestion={this.props.isLastQuestion} I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
       </div>
     );
   }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>Moodle QUIZ XML export</text>
+    </category>
+  </question>
+  <question type="matching">
+    <name>
+      <text>Ordena de mayor a menor los siguientes números.­</text>
+    </name>
+    <questiontext>
+      <text>Ordena de mayor a menor los siguientes números.­</text>
+    </questiontext>
+    <shuffleanswers>false</shuffleanswers>
+    <subquestion>
+      <text>1</text>
+      <answer>
+        <text>5­</text>
+      </answer>
+    </subquestion>
+    <subquestion>
+      <text>2</text>
+      <answer>
+        <text>­4</text>
+      </answer>
+    </subquestion>
+    <subquestion>
+      <text>3</text>
+      <answer>
+        <text>3­</text>
+      </answer>
+    </subquestion>
+    <subquestion>
+      <text>4</text>
+      <answer>
+        <text>2­</text>
+      </answer>
+    </subquestion>
+    <subquestion>
+      <text>5</text>
+      <answer>
+        <text>­1</text>
+      </answer>
+    </subquestion>
+  </question>
+</quiz>

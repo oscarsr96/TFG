@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>Moodle QUIZ XML export</text>
+    </category>
+  </question>
+  <question type="truefalse">
+    <name>
+      <text>Marque si las siguientes afirmaciones son verdaderas o falsas.</text>
+    </name>
+    <questiontext>
+      <text>El caballo blanco de santiago es blanco.­</text>
+    </questiontext>
+    <answer fraction="100">
+      <text>True</text>
+    </answer>
+    <answer fraction="0">
+      <text>False</text>
+    </answer>
+  </question>
+  <question type="truefalse">
+    <name>
+      <text>Marque si las siguientes afirmaciones son verdaderas o falsas.</text>
+    </name>
+    <questiontext>
+      <text>El sol es azul.</text>
+    </questiontext>
+    <answer fraction="0">
+      <text>true</text>
+    </answer>
+    <answer fraction="100">
+      <text>false</text>
+    </answer>
+  </question>
+</quiz>

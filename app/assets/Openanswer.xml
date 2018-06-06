@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>Moodle QUIZ XML export</text>
+    </category>
+  </question>
+  <question type="shortanswer">
+    <name>
+      <text>¿Cuanto es 2+2?­</text>
+    </name>
+    <questiontext>
+      <text>¿Cuanto es 2+2?­</text>
+    </questiontext>
+    <answer fraction="100">
+      <text>4-</text>
+    </answer>
+  </question>
+</quiz>

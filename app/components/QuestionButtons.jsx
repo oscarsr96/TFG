@@ -30,9 +30,9 @@ export default class QuestionButtons extends React.Component {
       <div className="questionButtonsWrapper">
 
       <div className="buttons">
-        <button className="answerQuestion" onClick={this.props.onAnswerQuestion} disabled={disable_answer}>{this.props.I18n.getTrans("i.answer")}</button>
-        <button id="comodin"  className="comodinQuestion" disabled={this.props.answered} hidden={!(this.props.comodin && this.state.comodin)} onClick={this.comodin.bind(this)}>1:2</button>
-        <button disabled={true} className="botonQuestion" ><Countdown secondsRemaining={this.props.time} ref="contador" key={this.props.index} corregir={this.props.onAnswerQuestion}/></button>
+        <button className="answerQuestion" onClick={this.props.onAnswerQuestion} disabled={this.props.answered}>{this.props.I18n.getTrans("i.answer")}</button>
+        <button id="comodin" className="comodinQuestion" disabled={this.props.answered} hidden={!(this.props.comodin && this.state.comodin)} onClick={this.comodin.bind(this)}>Comodín</button>
+        <button disabled className="botonQuestion" ><Countdown secondsRemaining={this.props.time} ref="contador" key={this.props.index} corregir={this.props.onAnswerQuestion}/></button>
       </div>
       <div className="nextButton">
         <button className="nextQuestion" hidden={this.props.isLastQuestion} onClick={this.props.onNextQuestion} disabled={disable_next}>{this.props.allow_finish ? this.props.I18n.getTrans("i.finish_quiz") : this.props.I18n.getTrans("i.next")}</button>

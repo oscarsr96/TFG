@@ -15,21 +15,21 @@ export default class FinishScreen extends React.Component {
 
     if(this.props.tracking.score < 0.5){
       let mark = this.props.I18n.getTrans("i.finalMarkSuspenso");
-      this.setState({nota:mark})
+      this.setState({nota:mark});
       return;
-    }else if(this.props.tracking.score <0.7){
+    } else if(this.props.tracking.score < 0.7){
       let mark = this.props.I18n.getTrans("i.finalMarkBien");
-      this.setState({nota:mark})
+      this.setState({nota:mark});
       return;
-    }else if(this.props.tracking.score <0.9){
+    } else if(this.props.tracking.score < 0.9){
       let mark = this.props.I18n.getTrans("i.finalMarkNotable");
-      this.setState({nota:mark})
-      return;
-    }else{
-      let mark = this.props.I18n.getTrans("i.finalMarkSobresaliente");
-      this.setState({nota:mark})
+      this.setState({nota:mark});
       return;
     }
+    let mark = this.props.I18n.getTrans("i.finalMarkSobresaliente");
+    this.setState({nota:mark});
+    return;
+
   }
   /* _getFinishScreenTitle(progress_measure, score){
     let finishTitleText;
@@ -61,15 +61,6 @@ export default class FinishScreen extends React.Component {
     return finishTitleText;
   }
 
-  
-
-
-
-
-
-
-
-
   render(){
     let finishTitleText = this._getFinishScreenTitle(this.props.tracking.progress_measure, this.props.tracking.score);
     return (
@@ -78,7 +69,7 @@ export default class FinishScreen extends React.Component {
         <h1>{this.state.nota}</h1>
         </div>
         <div className="circle">
-        <CircularProgressbar percentage={(this.props.tracking.score * 100).toFixed(2)}/>
+        <CircularProgressbar percentage={(this.props.tracking.score * 100).toFixed(2)} textForPercentage={(percentage) => `${percentage}`}/>
         </div>
       </div>
     );

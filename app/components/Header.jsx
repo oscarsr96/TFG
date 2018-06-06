@@ -28,10 +28,17 @@ export default class Header extends React.Component {
           trackingTexts.push("");
         }
 
-        else /*(typeof this.props.user_profile.learner_preference.difficulty === "number")*/{
-          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + this.props.tracking.difficulty);
+        else /* (typeof this.props.user_profile.learner_preference.difficulty === "number")*/if(this.props.tracking.difficulty === "Basic"){
+          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + this.props.I18n.getTrans("i.difficultyBasic"));
         }
-
+        else if(this.props.tracking.difficulty === "Medium"){
+          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + this.props.I18n.getTrans("i.difficultyMedium"));
+        }
+        else if(this.props.tracking.difficulty === "High"){
+          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + this.props.I18n.getTrans("i.difficultyHigh"));
+        } else {
+          trackingTexts.push(this.props.I18n.getTrans("i.difficulty") + ": " + this.props.I18n.getTrans("i.difficultyAdvanced"));
+        }
 
       }
     }

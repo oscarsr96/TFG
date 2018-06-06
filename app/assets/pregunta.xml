@@ -6,7 +6,7 @@
         </category>
         </question>
         <question type="truefalse">
-		<difficulty>Basic</difficulty>
+		<difficulty>1</difficulty>
         <name>
         <text>­Si un coche circula a 25m/s...</text>
         </name>
@@ -68,7 +68,7 @@
         </category>
         </question>
         <question type="truefalse">
-		<difficulty>Basic</difficulty>
+		<difficulty>1</difficulty>
         <name>
         <text>­Si un coche circula a 72km/h...</text>
         </name>
@@ -130,7 +130,7 @@
         </category>
         </question>
         <question type="multichoice">
-		<difficulty>Basic</difficulty>
+		<difficulty>1</difficulty>
         <name>
         <text>­Señala las opciones correctas</text>
         </name>
@@ -155,7 +155,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Basic</difficulty>
+        <difficulty>1</difficulty>
         <name>
         <text>­Para pasar de m/s a km/h...</text>
         </name>
@@ -189,7 +189,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Medium</difficulty>
+        <difficulty>4</difficulty>
         <name>
         <text>­Si un cuerpo mantiene una velocidad constante:</text>
         </name>
@@ -251,7 +251,7 @@
         </category>
         </question>
         <question type="shortanswer">
-		<difficulty>Basic</difficulty>
+		<difficulty>1</difficulty>
         <name>
         <text>­¿Cuál es el símbolo del primer elemento de la tabla periódica?</text>
         </name>
@@ -268,7 +268,7 @@
       </category>
       </question>
       <question type="matching">
-	  <difficulty>Basic</difficulty>
+	  <difficulty>1</difficulty>
       <name>
       <text>­Ordena las velocidades de mayor a menor</text>
       </name>
@@ -307,7 +307,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Basic</difficulty>
+        <difficulty>1</difficulty>
         <name>
         <text>­Cuando un cuerpo resbala en una superficie</text>
         </name>
@@ -369,7 +369,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Medium</difficulty>
+        <difficulty>4</difficulty>
         <name>
         <text>­Según la segunda Ley de Newton</text>
         </name>
@@ -412,7 +412,7 @@
         </answer>
         </question>
         <question type="truefalse">
-		<difficulty>Basic</difficulty>
+		<difficulty>1</difficulty>
         <name>
         <text>­Segun la segunda Ley de Newton</text>
         </name>
@@ -432,7 +432,7 @@
         </category>
         </question>
         <question type="multichoice">
-        <difficulty>Medium</difficulty>
+        <difficulty>4</difficulty>
         <name>
         <text>­Señala las opciones correctas</text>
         </name>
@@ -457,7 +457,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Medium</difficulty>
+        <difficulty>4</difficulty>
         <name>
         <text>­Para pasar de grados celsius a kelvin...</text>
         </name>
@@ -491,7 +491,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>High</difficulty>
+        <difficulty>7</difficulty>
         <name>
         <text>­En una reacción química:</text>
         </name>
@@ -553,7 +553,7 @@
         </category>
         </question>
         <question type="shortanswer">
-        <difficulty>Medium</difficulty>
+        <difficulty>4</difficulty>
         <name>
         <text>­¿Qué letra representa el número másico?</text>
         </name>
@@ -573,7 +573,7 @@
       <name>
       <text>­Ordena los elementos por su aparición en la tabla periódica</text>
       </name>
-      <difficulty>Medium</difficulty>
+      <difficulty>4</difficulty>
       <questiontext>
       <text>­Ordena los elementos por su aparición en la tabla periodica</text>
       </questiontext>
@@ -609,7 +609,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>High</difficulty>
+        <difficulty>7</difficulty>
         <name>
         <text>­Una disolución...</text>
         </name>
@@ -671,7 +671,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>High</difficulty>
+        <difficulty>7</difficulty>
         <name>
         <text>­Un átomo que cede electrones</text>
         </name>
@@ -733,7 +733,7 @@
         </category>
         </question>
         <question type="multichoice">
-        <difficulty>Advanced</difficulty>
+        <difficulty>9</difficulty>
         <name>
         <text>­Señala las opciones correctas</text>
         </name>
@@ -748,8 +748,8 @@
         <answer fraction="100">
         <text>­Un átomo que cede electrones es un metal</text>
         </answer>
-        <answer fraction="100">
-        <text>­El número de protones se mantiene siempre constante cuando se forman iones</text>
+        <answer fraction="0">
+        <text>­El número de protones cambia cuando se forman iones</text>
         </answer>
         </question>
         <question type="category">
@@ -758,7 +758,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>High</difficulty>
+        <difficulty>7</difficulty>
         <name>
         <text>­Una reacción de combustión</text>
         </name>
@@ -792,7 +792,7 @@
         </category>
         </question>
         <question type="truefalse">
-        <difficulty>Advanced</difficulty>
+        <difficulty>9</difficulty>
         <name>
         <text>­La masa molar de un compuesto:</text>
         </name>
@@ -854,7 +854,7 @@
         </category>
         </question>
         <question type="shortanswer">
-        <difficulty>Advanced</difficulty>
+        <difficulty>9</difficulty>
         <name>
         <text>­¿Cuántos neutrones tiene el hidrógeno?</text>
         </name>
@@ -874,7 +874,7 @@
       <name>
       <text>­Ordena los siguientes átomos de mayor a menor electronegatividad</text>
       </name>
-      <difficulty>Advanced</difficulty>
+      <difficulty>9</difficulty>
       <questiontext>
       <text>­Ordena los siguientes atomos de mayor a menor electronegatividad</text>
       </questiontext>

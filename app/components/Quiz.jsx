@@ -3,7 +3,6 @@ import './../assets/scss/quiz.scss';
 import './../assets/scss/main.scss';
 import $ from 'jquery';
 
-
 import * as Utils from '../vendors/Utils.js';
 import {addObjectives, addDifficulty, resetObjectives, finishApp} from './../reducers/actions';
 
@@ -26,252 +25,246 @@ export default class Quiz extends React.Component {
     let advancedQuiz = [];
     let incrementalQuiz = [];
     let onetothreeQuiz = [];
-    let noDiffQuiz=[];
+    let noDiffQuiz = [];
 
     let adaptive_sorted = false;
-    if((this.props.config.adaptive === true) && (typeof props.user_profile === "object") && (typeof props.user_profile.learner_preference === "object")) {
-      
-    
-        for(let i = 0; i < quiz.length; i++){
+    if((this.props.config.adaptive === true) && (typeof props.user_profile === "object") && (typeof props.user_profile.learner_preference === "object")){
 
-          if( quiz[i].Dificultad !== undefined){
+      for(let i = 0; i < quiz.length; i++){
+        console.log("quiz en el for")
+        console.log(quiz)
+        console.log("Preguntas en quiz "+ quiz.length)
 
-              if(quiz[i].Dificultad == "Basic"){
-                basicQuiz.push(quiz[i]);
-              } else if(quiz[i].Dificultad == "Medium"){
-                mediumQuiz.push(quiz[i]);
-              } else if(quiz[i].Dificultad == "High"){
-                highQuiz.push(quiz[i]);
-              } else if (quiz[i].Dificultad == "Advanced") {
-                advancedQuiz.push(quiz[i]);
-              }
+        if(quiz[i].Dificultad !== undefined){
+
+          if(quiz[i].Dificultad === "Basic"){
+            basicQuiz.push(quiz[i]);
+          } else if(quiz[i].Dificultad === "Medium"){
+            mediumQuiz.push(quiz[i]);
+          } else if(quiz[i].Dificultad === "High"){
+            highQuiz.push(quiz[i]);
+          } else if(quiz[i].Dificultad === "Advanced"){
+            advancedQuiz.push(quiz[i]);
+          }
         }
-          else if (typeof quiz[i].Dificultad === "undefined"){
-                noDiffQuiz.push(quiz[i]);
-              }
-
+        else if(typeof quiz[i].Dificultad === "undefined"){
+          noDiffQuiz.push(quiz[i]);
         }
+
+      }
         // questions.sort(function(a, b){ return b.suitability - a.suitability; });
         // adaptive_sorted = true;
-      
-    }
-  
 
-    
+    }
 
     function getRandomInt(min, max){
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-   
-
-
-      if(typeof this.props.user_profile.learner_preference.difficulty !== "undefined" && noDiffQuiz.length == 0){
-        console.log("La dificultad lms no es undefined")
+    if(typeof this.props.user_profile.learner_preference.difficulty !== "undefined" && noDiffQuiz.length === 0){
+      console.log("La dificultad lms no es undefined");
 
       switch (this.props.user_profile.learner_preference.difficulty){
 
-              case 0:
-              case 1:
-              case 2:
+      case 0:
+      case 1:
+      case 2:
 
-                for(let i = 0; i < basicQuiz.length; i++){
-                  questions.push(basicQuiz[i]);
-                }
-                for(let i = 0; i < mediumQuiz.length; i++){
-                  questions.push(mediumQuiz[i]);
-                }
-                for(let i = 0; i < highQuiz.length; i++){
-                  questions.push(highQuiz[i]);
-                }
-                for(let i = 0; i < advancedQuiz.length; i++){
-                  questions.push(advancedQuiz[i]);
-                }
-                break;
+        for(let i = 0; i < basicQuiz.length; i++){
+          questions.push(basicQuiz[i]);
+        }
+        for(let i = 0; i < mediumQuiz.length; i++){
+          questions.push(mediumQuiz[i]);
+        }
+        for(let i = 0; i < highQuiz.length; i++){
+          questions.push(highQuiz[i]);
+        }
+        for(let i = 0; i < advancedQuiz.length; i++){
+          questions.push(advancedQuiz[i]);
+        }
+        break;
 
-              case 3:
-              case 4:
-              case 5:
+      case 3:
+      case 4:
+      case 5:
 
-                for(let i = 0; i < mediumQuiz.length; i++){
-                  questions.push(mediumQuiz[i]);
-                }
-                for(let i = 0; i < highQuiz.length; i++){
-                  questions.push(highQuiz[i]);
-                }
-                for(let i = 0; i < advancedQuiz.length; i++){
-                  questions.push(advancedQuiz[i]);
-                }
-                break;
+        for(let i = 0; i < mediumQuiz.length; i++){
+          questions.push(mediumQuiz[i]);
+        }
+        for(let i = 0; i < highQuiz.length; i++){
+          questions.push(highQuiz[i]);
+        }
+        for(let i = 0; i < advancedQuiz.length; i++){
+          questions.push(advancedQuiz[i]);
+        }
+        break;
 
-              case 6:
-              case 7:
-                console.log("Empiezo por High");
+      case 6:
+      case 7:
+        console.log("Empiezo por High");
 
-                for(let i = 0; i < highQuiz.length; i++){
-                  questions.push(highQuiz[i]);
-                }
-                for(let i = 0; i < advancedQuiz.length; i++){
-                  questions.push(advancedQuiz[i]);
-                }
-                break;
+        for(let i = 0; i < highQuiz.length; i++){
+          questions.push(highQuiz[i]);
+        }
+        for(let i = 0; i < advancedQuiz.length; i++){
+          questions.push(advancedQuiz[i]);
+        }
+        break;
 
-              case 8:
-              case 9:
+      case 8:
+      case 9:
 
-                questions = advancedQuiz;
-                break;
-              default:
+        questions = advancedQuiz;
+        break;
+      default:
+        break;
+
+      }
+    } else {
+      console.log("He entrado en el else de lms config undefined");
+      console.log(noDiffQuiz.length);
+      if(noDiffQuiz.length !== 0){
+        questions = noDiffQuiz;
+      }
+      else if(this.props.config.difficulty !== undefined && noDiffQuiz.length === 0){
+        switch (this.props.config.difficulty){
+        case "Basic":
+          questions = basicQuiz;
+          break;
+        case "Medium":
+          questions = mediumQuiz;
+          break;
+        case "High":
+          questions = highQuiz;
+          break;
+        case "Advanced":
+          questions = advancedQuiz;
+          break;
+        default:
+
+          if(this.props.config.n < 4){
+            let m = getRandomInt(1, 4);
+            switch (this.props.config.n){
+            case 1:
+              if(m == 1){
+                onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
+                questions = onetothreeQuiz;
                 break;
 
               }
-      } else {
-          console.log("He entrado en el else de lms config undefined")
-          console.log(noDiffQuiz.length)
-        if( noDiffQuiz.length != 0){
-          questions = noDiffQuiz;
-        }
-        else if( this.props.config.difficulty !== undefined && noDiffQuiz.length==0){
-            switch (this.props.config.difficulty){
-            case "Basic":
-              questions = basicQuiz;
+              if(m == 2){
+                onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
+
+              }
+              if(m == 3){
+                onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
+
+              }
+              if(m == 4){
+                onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
+
+              }
               break;
-            case "Medium":
-              questions = mediumQuiz;
+            case 2:
+              if(m == 1){
+                onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
+                onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
+
+              }
+              if(m == 2){
+                onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
+                onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
+
+              }
+              if(m == 3){
+                onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
+                onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
+
+              }
+              if(m == 4){
+                onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
+                onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
+
+              }
               break;
-            case "High":
-              questions = highQuiz;
-              break;
-            case "Advanced":
-              questions = advancedQuiz;
-              break;
-            default:
+            case 3:
+              if(m == 1){
+                onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
+                onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
+                onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
 
-              if(this.props.config.n < 4){
-                  let m = getRandomInt(1, 4);
-                  switch (this.props.config.n){
-                    case 1:
-                      if(m == 1){
-                        onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+              }
+              if(m == 2){
+                onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
+                onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
+                onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
 
-                      }
-                      if(m == 2){
-                        onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+              }
+              if(m == 3){
+                onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
+                onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
+                onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
 
-                      }
-                      if(m == 3){
-                        onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+              }
+              if(m == 4){
+                onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
+                onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
+                onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
+                questions = onetothreeQuiz;
+                break;
+              }
 
-                      }
-                      if(m == 4){
-                        onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+            }
+          } else {
 
-                      }
-                      break;
-                    case 2:
-                      if(m == 1){
-                        onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
-                        onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+            for(let i = 0; i < Math.min(basicQuiz.length, Math.floor(this.props.config.n / 4)); i++){
 
-                      }
-                      if(m == 2){
-                        onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
-                        onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+              let m = getRandomInt(0, basicQuiz.length - 1);
+              incrementalQuiz.push(basicQuiz[m]);
+              basicQuiz.splice(m, 1);
+            }
+            for(let i = 0; i < Math.min(mediumQuiz.length, Math.floor(this.props.config.n / 4)); i++){
 
-                      }
-                      if(m == 3){
-                        onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
-                        onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+              let m = getRandomInt(0, mediumQuiz.length - 1);
+              incrementalQuiz.push(mediumQuiz[m]);
+              mediumQuiz.splice(m, 1);
+            }
+            for(let i = 0; i < Math.min(highQuiz.length, Math.floor(this.props.config.n / 4)); i++){
 
-                      }
-                      if(m == 4){
-                        onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
-                        onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+              let m = getRandomInt(0, highQuiz.length - 1);
+              incrementalQuiz.push(highQuiz[m]);
+              highQuiz.splice(m, 1);
+            }
+            for(let i = 0; i < Math.min(advancedQuiz.length, this.props.config.n - 3 * Math.floor(this.props.config.n / 4)); i++){
 
-                      }
-                      break;
-                    case 3:
-                      if(m == 1){
-                        onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
-                        onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
-                        onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
+              let m = getRandomInt(0, advancedQuiz.length - 1);
+              incrementalQuiz.push(advancedQuiz[m]);
+              advancedQuiz.splice(m, 1);
+            }
 
-                      }
-                      if(m == 2){
-                        onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
-                        onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
-                        onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
-
-                      }
-                      if(m == 3){
-                        onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
-                        onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
-                        onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
-
-                      }
-                      if(m == 4){
-                        onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
-                        onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
-                        onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
-                        questions = onetothreeQuiz;
-                        break;
-                      }
-
-                      
-
-                    }
-                  } else {
-
-                    for(let i = 0; i < Math.min(basicQuiz.length,Math.floor(this.props.config.n / 4)); i++){
-
-                      let m = getRandomInt(0, basicQuiz.length - 1);
-                      incrementalQuiz.push(basicQuiz[m]);
-                      basicQuiz.splice(m, 1);
-                    }
-                    for(let i = 0; i < Math.min(mediumQuiz.length,Math.floor(this.props.config.n / 4)); i++){
-
-                      let m = getRandomInt(0, mediumQuiz.length - 1);
-                      incrementalQuiz.push(mediumQuiz[m]);
-                      mediumQuiz.splice(m, 1);
-                    }
-                    for(let i = 0; i < Math.min(highQuiz.length,Math.floor(this.props.config.n / 4)); i++){
-
-                      let m = getRandomInt(0, highQuiz.length - 1);
-                      incrementalQuiz.push(highQuiz[m]);
-                      highQuiz.splice(m, 1);
-                    }
-                    for(let i = 0; i < Math.min(advancedQuiz.length, this.props.config.n - 3 * Math.floor(this.props.config.n / 4)); i++){
-
-                      let m = getRandomInt(0, advancedQuiz.length - 1);
-                      incrementalQuiz.push(advancedQuiz[m]);
-                      advancedQuiz.splice(m, 1);
-                    }
-
-                    questions = incrementalQuiz;
-                    break;
-                  }
+            questions = incrementalQuiz;
+            break;
+          }
         }
       }
     }
@@ -284,14 +277,16 @@ export default class Quiz extends React.Component {
     this.state = {
       quiz:questions,
       current_question_index:1,
+      nodiff: noDiffQuiz,
     };
   }
   componentDidMount(){
-    console.log(this.state.quiz)
-   
+    console.log("quiz")
+    console.log(this.state.quiz);
+    console.log(this.state.noDiffQuiz);
 
-    if( this.state.quiz[this.state.current_question_index - 1].Dificultad !== undefined){
-    this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
+    if(this.state.quiz[this.state.current_question_index - 1].Dificultad !== undefined){
+      this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
     }
 
     // Create objectives (One per question included in the quiz)
@@ -305,14 +300,14 @@ export default class Quiz extends React.Component {
 
   }
   onNextQuestion(){
-    
-    console.log(this.props.user_profile.learner_preference.difficulty)
+
+    console.log(this.props.user_profile.learner_preference.difficulty);
     let isLastQuestion = (this.state.current_question_index === this.state.quiz.length);
     if(isLastQuestion === false){
       this.setState({current_question_index:(this.state.current_question_index + 1)});
-        if(typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== undefined){
-            this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
-            }
+      if(typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== undefined){
+        this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
+      }
     } else {
       this.props.dispatch(finishApp(true));
     }
@@ -322,13 +317,12 @@ export default class Quiz extends React.Component {
     this.setState({current_question_index:1});
     this.props.dispatch(resetObjectives());
 
-
     if(typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== undefined){
-    this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
+      this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
     }
   }
   render(){
-    
+
     let currentQuestion = this.state.quiz[this.state.current_question_index - 1];
     let isLastQuestion = (this.state.current_question_index === this.state.quiz.length);
 
@@ -345,7 +339,7 @@ export default class Quiz extends React.Component {
       currentQuestionRender = (<TFQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "matching":
-      currentQuestionRender = (<SortingQuestion time={this.props.config.tiempo} quiz={this.state.quiz} onResetQuiz={this.onResetQuiz.bind(this)} index={this.state.current_question_index} comodin={false} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<SortingQuestion time={this.props.config.tiempo} quiz={this.state.quiz} index={this.state.current_question_index} comodin={false} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "shortanswer":
       currentQuestionRender = (<SHAQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);

@@ -4,7 +4,7 @@ export let GLOBAL_CONFIG = {
     debug_scorm_api:false,
     debug_scorm_api_window:false,
     available_locales:["en", "es"],
-    //locale: "es",
+    locale:"es",
     adaptive:true,
     finish_screen:true,
     scorm:{
@@ -12,11 +12,11 @@ export let GLOBAL_CONFIG = {
       score_threshold:0.6,
     },
     n:30,
-    difficulty:"a",
+    difficulty:"incremental",
     comodin:true,
-    fichero:"/assets/pregunta.xml",
+    fichero:"assets/TF.xml",
     titulo:"FyQ App",
-    tiempo: 15,
+    tiempo:15,
   },
   production:{
     debug:false,

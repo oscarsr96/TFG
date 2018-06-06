@@ -42,400 +42,327 @@ export class App extends React.Component {
 
           let json = (result);
 
-          let pregunta = Object.values(json.quiz)[0];
 
-          let questionSize = 0;
-          let questionSizes = [];
+          let pregunta = Object.values(json.quiz)[0];
+          console.log(pregunta);
+
+      
 
         // Hay que saber si type es category para ver cuando empieza una nueva pregunta
 
           for(let k = 0; k < pregunta.length; k++){
 
-            if(pregunta[k].$.type == "category" && nPreguntas == 0){
+            if(pregunta[k].$.type === "category"){
+              continue;
+            }
+            else if(pregunta[k].$.type !== "category" ){
               nPreguntas++;
+         
             }
-            else if(pregunta[k].$.type == "category" && nPreguntas != 0){
-              nPreguntas++;
-              questionSizes.push(questionSize);
-              questionSize = 0;
-            }
-            else {
-              questionSize++;
-            }
+          
 
           }
 
-          questionSizes.push(questionSize);
+          
 
           console.log("Hay " + nPreguntas + " preguntas");
-          console.log("El tamaño de las preguntas es " + questionSizes);
-          console.log(questionSizes.length);
+         
 
-          function primeraOpcion(numeroPregunta){
-            if(numeroPregunta == 1){ return 1; }
+          
 
-            let indice = 1;
-            for(let i = 0; i < numeroPregunta - 1; i++){
-              indice += questionSizes[i];
-            }
-            return indice + numeroPregunta - 1;
+          for(let x = 1; x < nPreguntas+1; x++){
 
-          }
-
-          for(let x = 1; x < questionSizes.length + 1; x++){
-
-            let w = primeraOpcion(x);
-            console.log(w);
             let h = x - 1;
 
-            if(pregunta[w].$.type == "truefalse"){
+            if(pregunta[x].$.type === "truefalse"){
 
-
-                if(  pregunta[w].difficulty === undefined){
+              
                 customjson[h] = {};
 
-                customjson[h].Tipo = pregunta[w].$.type;
+                customjson[h].Tipo = pregunta[x].$.type;
 
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
+
+                switch(pregunta[x].difficulty){
+
+                  case undefined:
+                      break;
+                  case 0:
+                  case 1:
+                  case 2:
+                    customjson[h].Dificultad = "Basic"
+                    break;
+                  case 3:
+                  case 4:
+                  case 5:
+                    customjson[h].Dificultad = "Medium"
+                    break;
+                  case 6:
+                  case 7:
+                    customjson[h].Dificultad = "High"
+                    break;
+                  case 8:
+                  case 9:
+                    customjson[h].Dificultad = "Advanced"
+                    break;
+                  default:
+                }
+
+                let enun = pregunta[x].questiontext[0].text[0]
+
+                if(enun.substring(enun.indexOf('>')+1, enun.lastIndexOf('<')) != ""){
+                  customjson[h].Enunciado = enun.substring(enun.indexOf('>')+1, enun.lastIndexOf('<'));
+                }else{
+                  customjson[h].Enunciado = enun;
+                }
+                
                 customjson[h].Opciones = [];
 
-                for(let y = 0; y < questionSizes[x - 1]; y++){
+                for(let y = 0; y <pregunta[x].answer.length; y++){
 
-                  let z = primeraOpcion(x) + y;
                   let i = y + 1;
 
                   customjson[h].Opciones[y] = {};
                   customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[z].questiontext[0].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[z].answer[0].$.fraction;
+
+
+                  let answer = pregunta[x].answer[y].text[0]
+
+
+                  if(answer.substring(answer.indexOf('>')+1, answer.lastIndexOf('<')) != ""){
+                  customjson[h].Opciones[y].Texto = answer.substring(answer.indexOf('>')+1, answer.lastIndexOf('<'));
+                  }else{
+                    customjson[h].Opciones[y].Texto=answer;
+                  }
+                  
+                  customjson[h].Opciones[y].Valor = pregunta[x].answer[y].$.fraction;
 
                 }
+              
+              
+              
+              }
+            
+            // preguntas shortanswer
+            else if(pregunta[x].$.type === "multichoice"){
+
+              
+
+              
+                customjson[h] = {};
+
+                customjson[h].Tipo = pregunta[x].$.type;
+
+                switch(pregunta[x].difficulty){
+
+                  case undefined:
+                      break;
+                  case 0:
+                  case 1:
+                  case 2:
+                    customjson[h].Dificultad = "Basic"
+                    break;
+                  case 3:
+                  case 4:
+                  case 5:
+                    customjson[h].Dificultad = "Medium"
+                    break;
+                  case 6:
+                  case 7:
+                    customjson[h].Dificultad = "High"
+                    break;
+                  case 8:
+                  case 9:
+                    customjson[h].Dificultad = "Advanced"
+                    break;
+                  default:
+                    break;
+                }
+
+                let enun = pregunta[x].questiontext[0].text[0]
+
+                if(enun.substring(enun.indexOf('>')+1, enun.lastIndexOf('<'))!= ""){
+                customjson[h].Enunciado = enun.substring(enun.indexOf('>')+1, enun.lastIndexOf('<'));
+                } else{
+                customjson[h].Enunciado = enun;
+
+                }
+
+
+                customjson[h].Opciones = [];
+
+
+
+                for(let y = 0; y < pregunta[x].answer.length; y++){
+
+                  let i = y + 1;
+                  customjson[h].Opciones[y] = {};
+                  customjson[h].Opciones[y].Id = i;
+                  let answer = pregunta[x].answer[y].text[0]
+
+
+                  if(answer.substring(answer.indexOf('>')+1, answer.lastIndexOf('<')) != ""){
+                  customjson[h].Opciones[y].Texto = answer.substring(answer.indexOf('>')+1, answer.lastIndexOf('<'));
+                  }else if (answer.indexOf('-') != -1){
+                    customjson[h].Opciones[y].Texto=answer.substring(0, answer.lastIndexOf('-'));
+                  }else{
+                    customjson[h].Opciones[y].Texto=answer;
+                  }
+
+
+                    
+                  
+                  customjson[h].Opciones[y].Valor = pregunta[x].answer[y].$.fraction;
+
+                }
+              
+
+              
+              
             }
-              // Evaluar dificultad
-              else if( pregunta[w].difficulty !== undefined){
+            else if( pregunta[x].$.type === "shortanswer"){
 
-              if(pregunta[w].difficulty[0] == "Basic"){
-
+              
+              
                 customjson[h] = {};
 
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-               
+                customjson[h].Tipo = pregunta[x].$.type;
 
-                customjson[h].Tipo = pregunta[w].$.type;
+                switch(pregunta[x].difficulty){
 
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
+                  case undefined:
+                      break;
+                  case 0:
+                  case 1:
+                  case 2:
+                    customjson[h].Dificultad = "Basic"
+                    break;
+                  case 3:
+                  case 4:
+                  case 5:
+                    customjson[h].Dificultad = "Medium"
+                    break;
+                  case 6:
+                  case 7:
+                    customjson[h].Dificultad = "High"
+                    break;
+                  case 8:
+                  case 9:
+                    customjson[h].Dificultad = "Advanced"
+                    break;
+                  default:
+                    break;
+                }
 
-                for(let y = 0; y < questionSizes[x - 1]; y++){
+                let enun = pregunta[x].questiontext[0].text[0]
 
-                  let z = primeraOpcion(x) + y;
-                  let i = y + 1;
-
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[z].questiontext[0].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[z].answer[0].$.fraction;
+                if(enun.substring(enun.indexOf('>')+1, enun.lastIndexOf('<'))!= ""){
+                customjson[h].Enunciado = enun.substring(enun.indexOf('>')+1, enun.lastIndexOf('<'));
+                } else{
+                customjson[h].Enunciado = enun;
 
                 }
-              }
 
-              else if(pregunta[w].difficulty[0] == "Medium"){
 
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
                 customjson[h].Opciones = [];
 
-                for(let y = 0; y < questionSizes[x - 1]; y++){
-
-                  let z = primeraOpcion(x) + y;
-                  let i = y + 1;
-
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[z].questiontext[0].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[z].answer[0].$.fraction;
-
-                }
-              }
-              else if(pregunta[w].difficulty[0] == "High"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < questionSizes[x - 1]; y++){
-
-                  let z = primeraOpcion(x) + y;
-                  let i = y + 1;
-
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[z].questiontext[0].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[z].answer[0].$.fraction;
-
-                }
-              }
-              else if(pregunta[w].difficulty[0] == "Advanced"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < questionSizes[x - 1]; y++){
-
-                  let z = primeraOpcion(x) + y;
-                  let i = y + 1;
-
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[z].questiontext[0].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[z].answer[0].$.fraction;
-
-                }
-              }
-            } 
-          }
-            // fin truefalse
-            else if(pregunta[w].$.type == "multichoice" || pregunta[w].$.type == "shortanswer"){
-
-              let tipo = "";
-              if(pregunta[w].$.type == "multichoice"){
-                tipo = "Multichoice";
-              } else {
-                tipo = "Shortanswer";
-              }
 
 
-              if( pregunta[w].difficulty === undefined){
-                  customjson[h] = {};
+                
 
-                customjson[h].Tipo = pregunta[w].$.type;
+                  customjson[h].Opciones[0] = {};
+                  customjson[h].Opciones[0].Id = 1;
+                  let answer = pregunta[x].answer[0].text[0];
 
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
 
-                for(let y = 0; y < pregunta[w].answer.length; y++){
+                  if(answer.substring(answer.indexOf('>')+1, answer.lastIndexOf('<')) != ""){
+                  customjson[h].Opciones[y].Texto = answer.substring(answer.indexOf('>')+1, answer.lastIndexOf('<'));
+                  }else if (answer.indexOf('-') != -1){
+                    customjson[h].Opciones[0].Texto=answer.substring(0, answer.lastIndexOf('-'));
+                  }else{
+                    customjson[h].Opciones[0].Texto=answer;
+                  }
 
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].answer[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].answer[y].$.fraction;
 
-                }
-             }
+                    
+                  
+                  customjson[h].Opciones[0].Valor = pregunta[x].answer[0].$.fraction;
 
-              else if( pregunta[w].difficulty !== undefined){
-              if(pregunta[w].difficulty[0] == "Basic"){
+                
+              
 
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < pregunta[w].answer.length; y++){
-
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].answer[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].answer[y].$.fraction;
-
-                }
-              }
-              else if(pregunta[w].difficulty[0] == "Medium"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < pregunta[w].answer.length; y++){
-
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].answer[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].answer[y].$.fraction;
-
-                }
-              }
-              else if(pregunta[w].difficulty[0] == "High"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < pregunta[w].answer.length; y++){
-
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].answer[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].answer[y].$.fraction;
-
-                }
-              }
-
-              else if(pregunta[w].difficulty[0] == "Advanced"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < pregunta[w].answer.length; y++){
-
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].answer[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].answer[y].$.fraction;
-
-                }
-              }
-             } 
+              
             }
 
-            else if(pregunta[w].$.type == "matching"){
+            else if(pregunta[x].$.type === "matching"){
 
-              if(pregunta[w].difficulty === undefined){
+              
                 customjson[h] = {};
 
-                customjson[h].Tipo = pregunta[w].$.type;
+                customjson[h].Tipo = pregunta[x].$.type;
 
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
+                switch(pregunta[x].difficulty){
+
+                  case undefined:
+                      break;
+                  case 0:
+                  case 1:
+                  case 2:
+                    customjson[h].Dificultad = "Basic"
+                    break;
+                  case 3:
+                  case 4:
+                  case 5:
+                    customjson[h].Dificultad = "Medium"
+                    break;
+                  case 6:
+                  case 7:
+                    customjson[h].Dificultad = "High"
+                    break;
+                  case 8:
+                  case 9:
+                    customjson[h].Dificultad = "Advanced"
+                    break;
+                  default:
+                    break;
+                }
+
+                let enun = pregunta[x].questiontext[0].text[0]
+
+                if(enun.substring(enun.indexOf('>')+1, enun.lastIndexOf('<')) != ""){
+                  customjson[h].Enunciado = enun.substring(enun.indexOf('>')+1, enun.lastIndexOf('<'));
+                }else{
+                  customjson[h].Enunciado = enun;
+                }
                 customjson[h].Opciones = [];
 
-                for(let y = 0; y < pregunta[w].subquestion.length; y++){
+                for(let y = 0; y < Math.min(4,pregunta[x].subquestion.length); y++){
 
                   let i = y + 1;
                   customjson[h].Opciones[y] = {};
                   customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].subquestion[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].subquestion[y].answer[0].text[0];
+                  customjson[h].Opciones[y].Texto = pregunta[x].subquestion[y].text[0];
+                  customjson[h].Opciones[y].Valor = pregunta[x].subquestion[y].answer[0].text[0];
                 }
-          }
+              
 
-
-              else if( pregunta[w].difficulty !== undefined){
-              if(pregunta[w].difficulty[0] == "Basic"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < pregunta[w].subquestion.length; y++){
-
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].subquestion[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].subquestion[y].answer[0].text[0];
-                }
               }
-
-              else if(pregunta[w].difficulty[0] == "Medium"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < pregunta[w].subquestion.length; y++){
-
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].subquestion[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].subquestion[y].answer[0].text[0];
-
-                }
-              }
-              else if(pregunta[w].difficulty[0] == "High"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < pregunta[w].subquestion.length; y++){
-
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].subquestion[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].subquestion[y].answer[0].text[0];
-                }
-              }
-
-              else if(pregunta[w].difficulty[0] == "Advanced"){
-
-                customjson[h] = {};
-
-                customjson[h].Dificultad = pregunta[w].difficulty[0];
-                customjson[h].Tipo = pregunta[w].$.type;
-
-                customjson[h].Enunciado = pregunta[w].name[0].text[0];
-                customjson[h].Opciones = [];
-
-                for(let y = 0; y < pregunta[w].subquestion.length; y++){
-
-                  let i = y + 1;
-                  customjson[h].Opciones[y] = {};
-                  customjson[h].Opciones[y].Id = i;
-                  customjson[h].Opciones[y].Texto = pregunta[w].subquestion[y].text[0];
-                  customjson[h].Opciones[y].Valor = pregunta[w].subquestion[y].answer[0].text[0];
-                }
-              }
-
             }
-          } 
 
-          }
 
-          console.log(customjson);
+              console.log(customjson);
+              for(let m = 0; m < customjson.length; m++){
+               customjson[m].Opciones.sort(function(){ return Math.random() - 0.5; });
+              }
 
-          for(let m = 0; m < customjson.length; m++){
-            customjson[m].Opciones.sort(function(){ return Math.random() - 0.5; });
-          }
+               this.props.dispatch(saveState(customjson));
+            
 
-          this.props.dispatch(saveState(customjson));
+          
+
+
+          
+
+          
 
         }.bind(this));
       }.bind(this),
@@ -453,7 +380,7 @@ export class App extends React.Component {
       );
       if((this.props.wait_for_user_profile !== true) && (Object.keys(this.props.json).length > 0)){
         appContent = (
-          <Quiz dispatch={this.props.dispatch} json={this.props.json} user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG}  I18n={I18n}/>
+          <Quiz dispatch={this.props.dispatch} json={this.props.json} user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n}/>
         );
       }
     } else {

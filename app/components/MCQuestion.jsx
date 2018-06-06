@@ -38,7 +38,7 @@ export default class MCQuestion extends React.Component {
     let nFalses = 0;
 
     for(let i = 0; i < nChoices; i++){
-      if(this.props.question.Opciones[i].Valor == 0 && nFalses != 2){
+      if(this.props.question.Opciones[i].Valor == 0 && nFalses != 1){
         document.getElementById(200 * i + 200).style = "display: none";
         nFalses++;
       }
@@ -87,6 +87,7 @@ export default class MCQuestion extends React.Component {
 
     // Mark question as answered
     this.setState({answered:true});
+    console.log(blankAnswers)
   }
   onResetQuestion(){
     this.setState({selected_choices_ids:[], answered:false});
@@ -98,13 +99,13 @@ export default class MCQuestion extends React.Component {
     let nChoices = this.props.question.Opciones.length;
     let nFalses = 0;
 
-    for(let i = 0; i < nChoices; i++){
-      if(this.props.question.Opciones[i].Valor == 0 && nFalses != 2){
+    /*for(let i = 0; i < nChoices; i++){
+      if(this.props.question.Opciones[i].Valor == 0 && nFalses != 1){
         document.getElementById(200 * i + 200).style = "display: inline";
         nFalses++;
       }
 
-    }
+    }*/
 
   }
   render(){
@@ -114,7 +115,7 @@ export default class MCQuestion extends React.Component {
 
     for(let i = 0; i < this.props.question.Opciones.length; i++){
 
-      choices.push(<MCQuestionChoice id={200 * i + 200} key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.Opciones[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.Opciones[i].Id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered}/>);
+      choices.push(<MCQuestionChoice id={200 * i + 200} key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.Opciones[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.Opciones[i].Id) != -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered}/>);
     }
     return (
       <div className="container">

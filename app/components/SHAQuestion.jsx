@@ -30,36 +30,7 @@ export default class SHAQuestion extends React.Component {
     }
     this.setState({selected_choices_ids:newSelectedChoices});
   }
-  onAnswerQuestion(){
-    // Calculate score
-    let nChoices = this.props.question.Opciones.length;
-    let correctAnswers = 0;
-    let incorrectAnswers = 0;
-    let blankAnswers = 0;
-
-    for(let i = 0; i < nChoices; i++){
-      let choice = this.props.question.Opciones[i];
-      if(this.state.selected_choices_ids.indexOf(choice.Id) !== -1){
-        // Answered choice
-        if(choice.Valor == 100){
-          correctAnswers += 1;
-        } else {
-          incorrectAnswers += 1;
-        }
-      } else {
-        blankAnswers += 1;
-      }
-    }
-    let scorePercentage = Math.max(0, (correctAnswers - incorrectAnswers) / this.props.question.Opciones.filter(function(c){return c.answer === true;}).length);
-
-    // Send data via SCORM
-    let objective = this.props.objective;
-    this.props.dispatch(objectiveAccomplished(objective.id, objective.score * scorePercentage));
-    // this.props.dispatch(objectiveAccomplishedThunk(objective.id, objective.score * scorePercentage));
-
-    // Mark question as answered
-    this.setState({answered:true});
-  }
+  
   onResetQuiz(){
     this.props.onResetQuiz();
   }
@@ -98,7 +69,7 @@ export default class SHAQuestion extends React.Component {
     let showCorrection = (this.state.answered);
     if(showCorrection){
       let x = document.getElementById("numb").value;
-      if(x != this.props.question.Opciones[0].Texto){
+      if(x !== this.props.question.Opciones[0].Texto){
         questionClassName += " input_incorrect";
       } else {
         questionClassName += " input_correct";

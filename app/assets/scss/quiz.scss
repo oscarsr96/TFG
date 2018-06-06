@@ -314,8 +314,15 @@ div.container div.questionButtonsWrapper div.buttons button.answerQuestion {
   font-weight: bold;
   cursor: pointer;
   margin-right: 1%;
-
 }
+ div.container div.questionButtonsWrapper div.buttons button.answerQuestion[disabled]{
+  color: gray;
+  border: 2px solid gray;
+  cursor: default;
+}
+
+
+
 div.container div.questionButtonsWrapper div.buttons button.botonQuestion {
   padding: 10px;
   color: black;
@@ -334,6 +341,17 @@ div.container div.questionButtonsWrapper div.buttons button.comodinQuestion {
   font-size: 15px;
   font-weight: bold;
   cursor:pointer;
+  margin-right: 1%;
+
+}
+div.container div.questionButtonsWrapper div.buttons button.comodinQuestion[disabled] {
+  padding: 10px;
+  color: black;
+  background: white;
+  border: 2px solid black;
+  font-size: 15px;
+  font-weight: bold;
+  cursor:default;
   margin-right: 1%;
 
 }
