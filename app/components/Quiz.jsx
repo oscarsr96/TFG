@@ -31,9 +31,9 @@ export default class Quiz extends React.Component {
     if((this.props.config.adaptive === true) && (typeof props.user_profile === "object") && (typeof props.user_profile.learner_preference === "object")){
 
       for(let i = 0; i < quiz.length; i++){
-        console.log("quiz en el for")
-        console.log(quiz)
-        console.log("Preguntas en quiz "+ quiz.length)
+        console.log("quiz en el for");
+        console.log(quiz);
+        console.log("Preguntas en quiz " + quiz.length);
 
         if(quiz[i].Dificultad !== undefined){
 
@@ -61,7 +61,7 @@ export default class Quiz extends React.Component {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    if( this.props.user_profile.learner_preference.difficulty !== undefined && noDiffQuiz.length === 0){
+    if(this.props.user_profile.learner_preference.difficulty !== undefined && noDiffQuiz.length === 0){
       console.log("La dificultad lms no es undefined");
 
       switch (this.props.user_profile.learner_preference.difficulty){
@@ -146,25 +146,25 @@ export default class Quiz extends React.Component {
             let m = getRandomInt(1, 4);
             switch (this.props.config.n){
             case 1:
-              if(m == 1){
+              if(m === 1){
                 onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
                 questions = onetothreeQuiz;
                 break;
 
               }
-              if(m == 2){
+              if(m === 2){
                 onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
                 questions = onetothreeQuiz;
                 break;
 
               }
-              if(m == 3){
+              if(m === 3){
                 onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
                 questions = onetothreeQuiz;
                 break;
 
               }
-              if(m == 4){
+              if(m === 4){
                 onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
                 questions = onetothreeQuiz;
                 break;
@@ -172,28 +172,28 @@ export default class Quiz extends React.Component {
               }
               break;
             case 2:
-              if(m == 1){
+              if(m === 1){
                 onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
                 onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
                 questions = onetothreeQuiz;
                 break;
 
               }
-              if(m == 2){
+              if(m === 2){
                 onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
                 onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
                 questions = onetothreeQuiz;
                 break;
 
               }
-              if(m == 3){
+              if(m === 3){
                 onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
                 onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
                 questions = onetothreeQuiz;
                 break;
 
               }
-              if(m == 4){
+              if(m === 4){
                 onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
                 onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
                 questions = onetothreeQuiz;
@@ -202,7 +202,7 @@ export default class Quiz extends React.Component {
               }
               break;
             case 3:
-              if(m == 1){
+              if(m === 1){
                 onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
                 onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
                 onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
@@ -210,7 +210,7 @@ export default class Quiz extends React.Component {
                 break;
 
               }
-              if(m == 2){
+              if(m === 2){
                 onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
                 onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
                 onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
@@ -218,7 +218,7 @@ export default class Quiz extends React.Component {
                 break;
 
               }
-              if(m == 3){
+              if(m === 3){
                 onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
                 onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
                 onetothreeQuiz.push(basicQuiz[getRandomInt(0, basicQuiz.length - 1)]);
@@ -226,7 +226,7 @@ export default class Quiz extends React.Component {
                 break;
 
               }
-              if(m == 4){
+              if(m === 4){
                 onetothreeQuiz.push(advancedQuiz[getRandomInt(0, advancedQuiz.length - 1)]);
                 onetothreeQuiz.push(highQuiz[getRandomInt(0, highQuiz.length - 1)]);
                 onetothreeQuiz.push(mediumQuiz[getRandomInt(0, mediumQuiz.length - 1)]);
@@ -240,7 +240,6 @@ export default class Quiz extends React.Component {
             let mediumLength = mediumQuiz.length;
             let highLength = highQuiz.length;
             let advancedLength = advancedQuiz.length;
-
 
             for(let i = 0; i < Math.min(basicLength, Math.floor(this.props.config.n / 4)); i++){
 
@@ -282,11 +281,11 @@ export default class Quiz extends React.Component {
     this.state = {
       quiz:questions,
       current_question_index:1,
-      nodiff: noDiffQuiz,
+      nodiff:noDiffQuiz,
     };
   }
   componentDidMount(){
-    console.log("quiz")
+    console.log("quiz");
     console.log(this.state.quiz);
     console.log(this.state.noDiffQuiz);
 

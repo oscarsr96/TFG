@@ -88,41 +88,41 @@ export default class SortingQuestion extends React.Component {
     let c = 0;
     let d = 0;
 
-    if(resp1.Id == 1){
+    if(resp1.Id === 1){
       a = 0;
-    } else if(resp1.Id == 2){
+    } else if(resp1.Id === 2){
       b = 0;
-    } else if(resp1.Id == 3){
+    } else if(resp1.Id === 3){
       c = 0;
     } else {
       d = 0;
     }
 
-    if(resp2.Id == 1){
+    if(resp2.Id === 1){
       a = 1;
-    } else if(resp2.Id == 2){
+    } else if(resp2.Id === 2){
       b = 1;
-    } else if(resp2.Id == 3){
+    } else if(resp2.Id === 3){
       c = 1;
     } else {
       d = 1;
     }
 
-    if(resp3.Id == 1){
+    if(resp3.Id === 1){
       a = 2;
-    } else if(resp3.Id == 2){
+    } else if(resp3.Id === 2){
       b = 2;
-    } else if(resp3.Id == 3){
+    } else if(resp3.Id === 3){
       c = 2;
     } else {
       d = 2;
     }
 
-    if(resp4.Id == 1){
+    if(resp4.Id === 1){
       a = 3;
-    } else if(resp4.Id == 2){
+    } else if(resp4.Id === 2){
       b = 3;
-    } else if(resp4.Id == 3){
+    } else if(resp4.Id === 3){
       c = 3;
     } else {
       d = 3;
@@ -130,7 +130,7 @@ export default class SortingQuestion extends React.Component {
 
     let objective = this.props.objective;
 
-    if(this.state.boton1 == resp1.Texto && this.state.boton2 == resp2.Texto && this.state.boton3 == resp3.Texto && this.state.boton4 == resp4.Texto){
+    if(this.state.boton1.toString() === resp1.Texto && this.state.boton2.toString() === resp2.Texto && this.state.boton3.toString() === resp3.Texto && this.state.boton4.toString() === resp4.Texto){
 
       document.getElementById("respuestaSorting").innerHTML = "Genial";
       this.props.dispatch(objectiveAccomplished(objective.id, objective.score * 1));

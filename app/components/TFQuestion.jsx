@@ -18,8 +18,8 @@ export default class TFQuestion extends React.Component {
       selectedValue2:"",
       selectedValue3:"",
       selectedValue4:"",
-      correccionBlanco1: false,
-      correccionBlanco2: false,
+      correccionBlanco1:false,
+      correccionBlanco2:false,
       correccionBlanco3:false,
       correccionBlanco4:false,
     };
@@ -32,14 +32,13 @@ export default class TFQuestion extends React.Component {
   handleChoiceChange(choice){
     let newSelectedChoices = Object.assign([], this.state.selected_choices_ids);
     let indexOf = newSelectedChoices.indexOf(choice.Id);
-    if(indexOf == -1){
+    if(indexOf === -1){
       newSelectedChoices.push(choice.Id);
     } else {
       newSelectedChoices.splice(indexOf, 1);
     }
     this.setState({selected_choices_ids:newSelectedChoices});
   }
-  
 
   onAnswerQuestion(){
 
@@ -58,53 +57,53 @@ export default class TFQuestion extends React.Component {
 
     case 2:
 
-      if(this.props.question.Opciones[0].Valor == 0){
+      if(this.props.question.Opciones[0].Valor === "0"){
 
-        if(this.state.selectedValue1 == "true"){
+        if(this.state.selectedValue1 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue1 == "false"){
+        } else if(this.state.selectedValue1 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue1:"false", correccionBlanco1: true});
+          this.setState({selectedValue1:"false", correccionBlanco1:true});
         }
 
       }
 
-      if(this.props.question.Opciones[0].Valor == 100){
+      if(this.props.question.Opciones[0].Valor === "100"){
 
-        if(this.state.selectedValue1 == "true"){
+        if(this.state.selectedValue1 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue1 == "false"){
+        } else if(this.state.selectedValue1 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue1:"true", correccionBlanco1: true});
+          this.setState({selectedValue1:"true", correccionBlanco1:true});
         }
 
       }
 
-      if(this.props.question.Opciones[1].Valor == 0){
+      if(this.props.question.Opciones[1].Valor === "0"){
 
-        if(this.state.selectedValue2 == "true"){
+        if(this.state.selectedValue2 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue2 == "false"){
+        } else if(this.state.selectedValue2 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue2:"false", correccionBlanco2: true});
+          this.setState({selectedValue2:"false", correccionBlanco2:true});
         }
       }
 
-      if(this.props.question.Opciones[1].Valor == 100){
+      if(this.props.question.Opciones[1].Valor === "100"){
 
-        if(this.state.selectedValue2 == "true"){
+        if(this.state.selectedValue2 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue2 == "false"){
+        } else if(this.state.selectedValue2 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue2:"true", correccionBlanco2: true});
+          this.setState({selectedValue2:"true", correccionBlanco2:true});
         }
 
       }
@@ -112,180 +111,178 @@ export default class TFQuestion extends React.Component {
       break;
     case 3:
 
-      if(this.props.question.Opciones[0].Valor == 0){
+      if(this.props.question.Opciones[0].Valor === "0"){
 
-        if(this.state.selectedValue1 == "true"){
+        if(this.state.selectedValue1 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue1 == "false"){
+        } else if(this.state.selectedValue1 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue1:"false", correccionBlanco1: true});
+          this.setState({selectedValue1:"false", correccionBlanco1:true});
         }
       }
 
-      if(this.props.question.Opciones[0].Valor == 100){
+      if(this.props.question.Opciones[0].Valor === "100"){
 
-        if(this.state.selectedValue1 == "true"){
+        if(this.state.selectedValue1 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue1 == "false"){
+        } else if(this.state.selectedValue1 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue1:"true", correccionBlanco1: true});
+          this.setState({selectedValue1:"true", correccionBlanco1:true});
         }
       }
 
-      if(this.props.question.Opciones[1].Valor == 0){
+      if(this.props.question.Opciones[1].Valor === "0"){
 
-        if(this.state.selectedValue2 == "true"){
+        if(this.state.selectedValue2 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue2 == "false"){
+        } else if(this.state.selectedValue2 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue2:"false", correccionBlanco2: true});
+          this.setState({selectedValue2:"false", correccionBlanco2:true});
         }
       }
 
-      if(this.props.question.Opciones[1].Valor == 100){
+      if(this.props.question.Opciones[1].Valor === "100"){
 
-        if(this.state.selectedValue2 == "true"){
+        if(this.state.selectedValue2 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue2 == "false"){
+        } else if(this.state.selectedValue2 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue2:"true", correccionBlanco2: true});
+          this.setState({selectedValue2:"true", correccionBlanco2:true});
         }
       }
 
-      if(this.props.question.Opciones[2].Valor == 0){
+      if(this.props.question.Opciones[2].Valor === "0"){
 
-        if(this.state.selectedValue3 == "true"){
+        if(this.state.selectedValue3 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue3 == "false"){
+        } else if(this.state.selectedValue3 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue3:"false", correccionBlanco3: true});
+          this.setState({selectedValue3:"false", correccionBlanco3:true});
         }
       }
 
-      if(this.props.question.Opciones[2].Valor == 100){
+      if(this.props.question.Opciones[2].Valor === "100"){
 
-        if(this.state.selectedValue3 == "true"){
+        if(this.state.selectedValue3 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue3 == "false"){
+        } else if(this.state.selectedValue3 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue3:"true", correccionBlanco3: true});
+          this.setState({selectedValue3:"true", correccionBlanco3:true});
         }
       }
       break;
     case 4:
 
-      if(this.props.question.Opciones[0].Valor == 0){
+      if(this.props.question.Opciones[0].Valor === "0"){
 
-        if(this.state.selectedValue1 == "true"){
+        if(this.state.selectedValue1 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue1 == "false"){
+        } else if(this.state.selectedValue1 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue1:"false", correccionBlanco1: true});
+          this.setState({selectedValue1:"false", correccionBlanco1:true});
         }
       }
 
-      if(this.props.question.Opciones[0].Valor == 100){
+      if(this.props.question.Opciones[0].Valor === "100"){
 
-        if(this.state.selectedValue1 == "true"){
+        if(this.state.selectedValue1 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue1 == "false"){
+        } else if(this.state.selectedValue1 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue1:"true", correccionBlanco1: true});
+          this.setState({selectedValue1:"true", correccionBlanco1:true});
         }
       }
 
-      if(this.props.question.Opciones[1].Valor == 0){
+      if(this.props.question.Opciones[1].Valor === "0"){
 
-        if(this.state.selectedValue2 == "true"){
+        if(this.state.selectedValue2 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue2 == "false"){
+        } else if(this.state.selectedValue2 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue2:"false", correccionBlanco2: true});
+          this.setState({selectedValue2:"false", correccionBlanco2:true});
         }
       }
 
-      if(this.props.question.Opciones[1].Valor == 100){
+      if(this.props.question.Opciones[1].Valor === "100"){
 
-        if(this.state.selectedValue2 == "true"){
+        if(this.state.selectedValue2 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue2 == "false"){
+        } else if(this.state.selectedValue2 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue2:"true", correccionBlanco2: true});
+          this.setState({selectedValue2:"true", correccionBlanco2:true});
         }
       }
 
-      if(this.props.question.Opciones[2].Valor == 0){
+      if(this.props.question.Opciones[2].Valor === "0"){
 
-        if(this.state.selectedValue3 == "true"){
+        if(this.state.selectedValue3 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue3 == "false"){
+        } else if(this.state.selectedValue3 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue3:"false", correccionBlanco3: true});
+          this.setState({selectedValue3:"false", correccionBlanco3:true});
         }
       }
 
-      if(this.props.question.Opciones[2].Valor == 100){
+      if(this.props.question.Opciones[2].Valor === "100"){
 
-        if(this.state.selectedValue3 == "true"){
+        if(this.state.selectedValue3 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue3 == "false"){
+        } else if(this.state.selectedValue3 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue3:"true", correccionBlanco3: true});
+          this.setState({selectedValue3:"true", correccionBlanco3:true});
         }
       }
 
-      if(this.props.question.Opciones[3].Valor == 0){
+      if(this.props.question.Opciones[3].Valor === "0"){
 
-        if(this.state.selectedValue4 == "true"){
+        if(this.state.selectedValue4 === "true"){
           incorrectAnswers += 1;
-        } else if(this.state.selectedValue4 == "false"){
+        } else if(this.state.selectedValue4 === "false"){
           correctAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue4:"false", correccionBlanco4: true});
+          this.setState({selectedValue4:"false", correccionBlanco4:true});
         }
       }
 
-      if(this.props.question.Opciones[3].Valor == 100){
+      if(this.props.question.Opciones[3].Valor === "100"){
 
-        if(this.state.selectedValue4 == "true"){
+        if(this.state.selectedValue4 === "true"){
           correctAnswers += 1;
-        } else if(this.state.selectedValue4 == "false"){
+        } else if(this.state.selectedValue4 === "false"){
           incorrectAnswers += 1;
         } else {
           blankAnswers += 1;
-          this.setState({selectedValue4:"true", correccionBlanco4: true});
+          this.setState({selectedValue4:"true", correccionBlanco4:true});
         }
       }
       break;
 
     }
-
- 
 
     let totalCorrectAnswers = 0;
     let scorePercentage = 0;
@@ -326,7 +323,6 @@ export default class TFQuestion extends React.Component {
     let nChoices = this.props.question.Opciones.length;
     let nFalses = 0;
 
-  
     this.setState({selectedValue1:"", selectedValue2:"", selectedValue3:"", selectedValue4:""});
     this.setState({correccionBlanco1:false, correccionBlanco2:false, correccionBlanco3:false, correccionBlanco4:false});
   }
@@ -343,158 +339,158 @@ export default class TFQuestion extends React.Component {
     let showCorrection = (this.state.answered);
     if(showCorrection){
 
-      if(this.props.question.Opciones.length == 2){
+      if(this.props.question.Opciones.length === 2){
 
-        if(this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 0){
+        if(this.state.selectedValue1 === "true" && this.props.question.Opciones[0].Valor === "100" || this.state.selectedValue1 === "false" && this.props.question.Opciones[0].Valor === "0"){
           if(this.state.correccionBlanco1){
-            questionClassName1="truefalse_blanco"
-          }else{
-          questionClassName1 = "truefalse_correcto";
-         }
-        }
-      
-        if(this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 0){
-          if(this.state.correccionBlanco1){
-            questionClassName1="truefalse_blanco"
-          }else{
-          questionClassName1 = "truefalse_incorrecto";
-         }
+            questionClassName1 = "truefalse_blanco";
+          } else {
+            questionClassName1 = "truefalse_correcto";
+          }
         }
 
-        if(this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 0){
-          if(this.state.correccionBlanco2){
-            questionClassName2="truefalse_blanco"
-          }else{
-          questionClassName2 = "truefalse_correcto";
-         }
+        if(this.state.selectedValue1 === "false" && this.props.question.Opciones[0].Valor === "100" || this.state.selectedValue1 === "true" && this.props.question.Opciones[0].Valor === "0"){
+          if(this.state.correccionBlanco1){
+            questionClassName1 = "truefalse_blanco";
+          } else {
+            questionClassName1 = "truefalse_incorrecto";
+          }
         }
-       
-        if(this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 0){
+
+        if(this.state.selectedValue2 === "true" && this.props.question.Opciones[1].Valor === "100" || this.state.selectedValue2 === "false" && this.props.question.Opciones[1].Valor === "0"){
           if(this.state.correccionBlanco2){
-            questionClassName2="truefalse_blanco"
-          }else{
-          questionClassName2 = "truefalse_incorrecto";
-         }
+            questionClassName2 = "truefalse_blanco";
+          } else {
+            questionClassName2 = "truefalse_correcto";
+          }
+        }
+
+        if(this.state.selectedValue2 === "false" && this.props.question.Opciones[1].Valor === "100" || this.state.selectedValue2 === "true" && this.props.question.Opciones[1].Valor === "0"){
+          if(this.state.correccionBlanco2){
+            questionClassName2 = "truefalse_blanco";
+          } else {
+            questionClassName2 = "truefalse_incorrecto";
+          }
         }
 
       }
 
-      if(this.props.question.Opciones.length == 3){
+      if(this.props.question.Opciones.length === 3){
 
-        if(this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 0){
+        if(this.state.selectedValue1 === "true" && this.props.question.Opciones[0].Valor === "100" || this.state.selectedValue1 === "false" && this.props.question.Opciones[0].Valor === "0"){
           if(this.state.correccionBlanco1){
-            questionClassName1="truefalse_blanco"
-          }else{
-          questionClassName1 = "truefalse_correcto";
-         }
+            questionClassName1 = "truefalse_blanco";
+          } else {
+            questionClassName1 = "truefalse_correcto";
+          }
         }
-        
-        if(this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 0){
+
+        if(this.state.selectedValue1 === "false" && this.props.question.Opciones[0].Valor === "100" || this.state.selectedValue1 === "true" && this.props.question.Opciones[0].Valor === "0"){
           if(this.state.correccionBlanco1){
-            questionClassName1="truefalse_blanco"
-          }else{
-          questionClassName1 = "truefalse_incorrecto";
-         }
+            questionClassName1 = "truefalse_blanco";
+          } else {
+            questionClassName1 = "truefalse_incorrecto";
+          }
         }
 
-        if(this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 0){
+        if(this.state.selectedValue2 === "true" && this.props.question.Opciones[1].Valor === "100" || this.state.selectedValue2 === "false" && this.props.question.Opciones[1].Valor === "0"){
           if(this.state.correccionBlanco2){
-            questionClassName2="truefalse_blanco"
-          }else{
-          questionClassName2 = "truefalse_correcto";
-         }
-        }
-        
-        if(this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 0){
-          if(this.state.correccionBlanco2){
-            questionClassName2="truefalse_blanco"
-          }else{
-          questionClassName2 = "truefalse_incorrecto";
-         }
+            questionClassName2 = "truefalse_blanco";
+          } else {
+            questionClassName2 = "truefalse_correcto";
+          }
         }
 
-        if(this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 0){
-          if(this.state.correccionBlanco3){
-            questionClassName3="truefalse_blanco"
-          }else{
-          questionClassName3 = "truefalse_correcto";
-         }
+        if(this.state.selectedValue2 === "false" && this.props.question.Opciones[1].Valor === "100" || this.state.selectedValue2 === "true" && this.props.question.Opciones[1].Valor === "0"){
+          if(this.state.correccionBlanco2){
+            questionClassName2 = "truefalse_blanco";
+          } else {
+            questionClassName2 = "truefalse_incorrecto";
+          }
         }
-        
-        if(this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 0){
+
+        if(this.state.selectedValue3 === "true" && this.props.question.Opciones[2].Valor === "100" || this.state.selectedValue3 === "false" && this.props.question.Opciones[2].Valor === "0"){
           if(this.state.correccionBlanco3){
-            questionClassName3="truefalse_blanco"
-          }else{
-          questionClassName3 = "truefalse_incorrecto";
-         }
+            questionClassName3 = "truefalse_blanco";
+          } else {
+            questionClassName3 = "truefalse_correcto";
+          }
+        }
+
+        if(this.state.selectedValue3 === "false" && this.props.question.Opciones[2].Valor === "100" || this.state.selectedValue3 === "true" && this.props.question.Opciones[2].Valor === "0"){
+          if(this.state.correccionBlanco3){
+            questionClassName3 = "truefalse_blanco";
+          } else {
+            questionClassName3 = "truefalse_incorrecto";
+          }
         }
 
       }
 
-      if(this.props.question.Opciones.length == 4){
+      if(this.props.question.Opciones.length === 4){
 
-        if(this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 0){
+        if(this.state.selectedValue1 === "true" && this.props.question.Opciones[0].Valor === "100" || this.state.selectedValue1 === "false" && this.props.question.Opciones[0].Valor === "0"){
           if(this.state.correccionBlanco1){
-            questionClassName1="truefalse_blanco"
-          }else{
-          questionClassName1 = "truefalse_correcto";
-         }
+            questionClassName1 = "truefalse_blanco";
+          } else {
+            questionClassName1 = "truefalse_correcto";
+          }
         }
-        
-        if(this.state.selectedValue1 == "false" && this.props.question.Opciones[0].Valor == 100 || this.state.selectedValue1 == "true" && this.props.question.Opciones[0].Valor == 0){
+
+        if(this.state.selectedValue1 === "false" && this.props.question.Opciones[0].Valor === "100" || this.state.selectedValue1 === "true" && this.props.question.Opciones[0].Valor === "0"){
           if(this.state.correccionBlanco1){
-            questionClassName1="truefalse_blanco"
-          }else{
-          questionClassName1 = "truefalse_incorrecto";
-         }
+            questionClassName1 = "truefalse_blanco";
+          } else {
+            questionClassName1 = "truefalse_incorrecto";
+          }
         }
 
-        if(this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 0){
+        if(this.state.selectedValue2 === "true" && this.props.question.Opciones[1].Valor === "100" || this.state.selectedValue2 === "false" && this.props.question.Opciones[1].Valor === "0"){
           if(this.state.correccionBlanco2){
-            questionClassName2="truefalse_blanco"
-          }else{
-          questionClassName2 = "truefalse_correcto";
-         }
+            questionClassName2 = "truefalse_blanco";
+          } else {
+            questionClassName2 = "truefalse_correcto";
+          }
         }
-       
-        if(this.state.selectedValue2 == "false" && this.props.question.Opciones[1].Valor == 100 || this.state.selectedValue2 == "true" && this.props.question.Opciones[1].Valor == 0){
+
+        if(this.state.selectedValue2 === "false" && this.props.question.Opciones[1].Valor === "100" || this.state.selectedValue2 === "true" && this.props.question.Opciones[1].Valor === "0"){
           if(this.state.correccionBlanco2){
-            questionClassName2="truefalse_blanco"
-          }else{
-          questionClassName2 = "truefalse_incorrecto";
-         }
+            questionClassName2 = "truefalse_blanco";
+          } else {
+            questionClassName2 = "truefalse_incorrecto";
+          }
         }
 
-        if(this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 0){
+        if(this.state.selectedValue3 === "true" && this.props.question.Opciones[2].Valor === "100" || this.state.selectedValue3 === "false" && this.props.question.Opciones[2].Valor === "0"){
           if(this.state.correccionBlanco3){
-            questionClassName3="truefalse_blanco"
-          }else{
-          questionClassName3 = "truefalse_correcto";
-         }
-        }
-       
-        if(this.state.selectedValue3 == "false" && this.props.question.Opciones[2].Valor == 100 || this.state.selectedValue3 == "true" && this.props.question.Opciones[2].Valor == 0){
-          if(this.state.correccionBlanco3){
-            questionClassName3="truefalse_blanco"
-          }else{
-          questionClassName3 = "truefalse_incorrecto";
-         }
+            questionClassName3 = "truefalse_blanco";
+          } else {
+            questionClassName3 = "truefalse_correcto";
+          }
         }
 
-        if(this.state.selectedValue4 == "true" && this.props.question.Opciones[3].Valor == 100 || this.state.selectedValue4 == "false" && this.props.question.Opciones[3].Valor == 0){
-          if(this.state.correccionBlanco4){
-            questionClassName4="truefalse_blanco"
-          }else{
-          questionClassName4 = "truefalse_correcto";
-         }
+        if(this.state.selectedValue3 === "false" && this.props.question.Opciones[2].Valor === "100" || this.state.selectedValue3 === "true" && this.props.question.Opciones[2].Valor === "0"){
+          if(this.state.correccionBlanco3){
+            questionClassName3 = "truefalse_blanco";
+          } else {
+            questionClassName3 = "truefalse_incorrecto";
+          }
         }
-       
-        if(this.state.selectedValue4 == "false" && this.props.question.Opciones[3].Valor == 100 || this.state.selectedValue4 == "true" && this.props.question.Opciones[3].Valor == 0){
+
+        if(this.state.selectedValue4 === "true" && this.props.question.Opciones[3].Valor === "100" || this.state.selectedValue4 === "false" && this.props.question.Opciones[3].Valor === "0"){
           if(this.state.correccionBlanco4){
-            questionClassName4="truefalse_blanco"
-          }else{
-          questionClassName4 = "truefalse_incorrecto";
-         }
+            questionClassName4 = "truefalse_blanco";
+          } else {
+            questionClassName4 = "truefalse_correcto";
+          }
+        }
+
+        if(this.state.selectedValue4 === "false" && this.props.question.Opciones[3].Valor === "100" || this.state.selectedValue4 === "true" && this.props.question.Opciones[3].Valor === "0"){
+          if(this.state.correccionBlanco4){
+            questionClassName4 = "truefalse_blanco";
+          } else {
+            questionClassName4 = "truefalse_incorrecto";
+          }
         }
 
       }
@@ -517,10 +513,10 @@ export default class TFQuestion extends React.Component {
                 onChange={this.handleChange.bind(this)}>
 
               <label>
-                <Radio  disabled={this.state.answered} value="true" />V
+                <Radio disabled={this.state.answered} value="true" />V
               </label>
               <label>
-               <Radio  disabled={this.state.answered} value="false" />F
+               <Radio disabled={this.state.answered} value="false" />F
               </label>
 
             </RadioGroup>
@@ -573,10 +569,10 @@ export default class TFQuestion extends React.Component {
             onChange={this.handleChange.bind(this)}>
 
           <label>
-            <Radio  disabled={this.state.answered} value="true" />V
+            <Radio disabled={this.state.answered} value="true" />V
           </label>
           <label>
-           <Radio  disabled={this.state.answered} value="false" />F
+           <Radio disabled={this.state.answered} value="false" />F
           </label>
 
         </RadioGroup>
@@ -764,7 +760,7 @@ export default class TFQuestion extends React.Component {
 
       </div>
 
-        <QuestionButtons time={this.props.time} comodin={false}  index={this.props.index} ref="questions" lastQuestion={this.props.isLastQuestion} I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
+        <QuestionButtons time={this.props.time} comodin={false} index={this.props.index} ref="questions" lastQuestion={this.props.isLastQuestion} I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
       </div>
     );
   }

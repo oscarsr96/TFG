@@ -14,7 +14,7 @@ export let GLOBAL_CONFIG = {
     n:100,
     difficulty:"incremental",
     comodin:true,
-    fichero:"assets/MC.xml",
+    fichero:"assets/test_MoodleXML.xml",
     titulo:"FyQ App",
     tiempo:15,
   },
