@@ -82,30 +82,34 @@ export class App extends React.Component {
                 customjson[h].Tipo = pregunta[x].$.type;
 
 
-                switch(pregunta[x].difficulty){
+                if( pregunta[x].difficulty !== undefined){
 
-                  case undefined:
-                      break;
-                  case 0:
-                  case 1:
-                  case 2:
+                switch(pregunta[x].difficulty[0]){
+
+                  
+                  case "0":
+                  case "1":
+                  case "2":
                     customjson[h].Dificultad = "Basic"
                     break;
-                  case 3:
-                  case 4:
-                  case 5:
+                  case "3":
+                  case "4":
+                  case "5":
                     customjson[h].Dificultad = "Medium"
                     break;
-                  case 6:
-                  case 7:
+                  case "6":
+                  case "7":
                     customjson[h].Dificultad = "High"
                     break;
-                  case 8:
-                  case 9:
+                  case "8":
+                  case "9":
                     customjson[h].Dificultad = "Advanced"
                     break;
                   default:
+                    break;
                 }
+              }
+
 
                 let enun = pregunta[x].questiontext[0].text[0]
 
@@ -138,7 +142,7 @@ export class App extends React.Component {
 
                 }
               
-              
+                customjson[h].Tipo = "truefalse_multichoice";
               
               }
             
@@ -152,31 +156,34 @@ export class App extends React.Component {
 
                 customjson[h].Tipo = pregunta[x].$.type;
 
-                switch(pregunta[x].difficulty){
+                if( pregunta[x].difficulty !== undefined){
 
-                  case undefined:
-                      break;
-                  case 0:
-                  case 1:
-                  case 2:
+                switch(pregunta[x].difficulty[0]){
+
+                  
+                  case "0":
+                  case "1":
+                  case "2":
                     customjson[h].Dificultad = "Basic"
                     break;
-                  case 3:
-                  case 4:
-                  case 5:
+                  case "3":
+                  case "4":
+                  case "5":
                     customjson[h].Dificultad = "Medium"
                     break;
-                  case 6:
-                  case 7:
+                  case "6":
+                  case "7":
                     customjson[h].Dificultad = "High"
                     break;
-                  case 8:
-                  case 9:
+                  case "8":
+                  case "9":
                     customjson[h].Dificultad = "Advanced"
                     break;
                   default:
                     break;
                 }
+              }
+
 
                 let enun = pregunta[x].questiontext[0].text[0]
 
@@ -190,7 +197,7 @@ export class App extends React.Component {
 
                 customjson[h].Opciones = [];
 
-
+                let correctOptions;
 
                 for(let y = 0; y < pregunta[x].answer.length; y++){
 
@@ -209,12 +216,16 @@ export class App extends React.Component {
                   }
 
 
-                    
+                  if(pregunta[x].answer[y].$.fraction == 100){ 
+                    correctOptions ++
+                  }
                   
                   customjson[h].Opciones[y].Valor = pregunta[x].answer[y].$.fraction;
 
                 }
-              
+                if(correctOptions != 1){
+                  customjson[h].Tipo = "multichoice";
+                }
 
               
               
@@ -227,31 +238,34 @@ export class App extends React.Component {
 
                 customjson[h].Tipo = pregunta[x].$.type;
 
-                switch(pregunta[x].difficulty){
+                if( pregunta[x].difficulty !== undefined){
 
-                  case undefined:
-                      break;
-                  case 0:
-                  case 1:
-                  case 2:
+                switch(pregunta[x].difficulty[0]){
+
+                  
+                  case "0":
+                  case "1":
+                  case "2":
                     customjson[h].Dificultad = "Basic"
                     break;
-                  case 3:
-                  case 4:
-                  case 5:
+                  case "3":
+                  case "4":
+                  case "5":
                     customjson[h].Dificultad = "Medium"
                     break;
-                  case 6:
-                  case 7:
+                  case "6":
+                  case "7":
                     customjson[h].Dificultad = "High"
                     break;
-                  case 8:
-                  case 9:
+                  case "8":
+                  case "9":
                     customjson[h].Dificultad = "Advanced"
                     break;
                   default:
                     break;
                 }
+              }
+
 
                 let enun = pregunta[x].questiontext[0].text[0]
 
@@ -300,31 +314,33 @@ export class App extends React.Component {
 
                 customjson[h].Tipo = pregunta[x].$.type;
 
-                switch(pregunta[x].difficulty){
+                if( pregunta[x].difficulty !== undefined){
 
-                  case undefined:
-                      break;
-                  case 0:
-                  case 1:
-                  case 2:
+                switch(pregunta[x].difficulty[0]){
+
+                  
+                  case "0":
+                  case "1":
+                  case "2":
                     customjson[h].Dificultad = "Basic"
                     break;
-                  case 3:
-                  case 4:
-                  case 5:
+                  case "3":
+                  case "4":
+                  case "5":
                     customjson[h].Dificultad = "Medium"
                     break;
-                  case 6:
-                  case 7:
+                  case "6":
+                  case "7":
                     customjson[h].Dificultad = "High"
                     break;
-                  case 8:
-                  case 9:
+                  case "8":
+                  case "9":
                     customjson[h].Dificultad = "Advanced"
                     break;
                   default:
                     break;
                 }
+              }
 
                 let enun = pregunta[x].questiontext[0].text[0]
 

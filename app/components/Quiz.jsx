@@ -61,7 +61,7 @@ export default class Quiz extends React.Component {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    if(typeof this.props.user_profile.learner_preference.difficulty !== "undefined" && noDiffQuiz.length === 0){
+    if( this.props.user_profile.learner_preference.difficulty !== undefined && noDiffQuiz.length === 0){
       console.log("La dificultad lms no es undefined");
 
       switch (this.props.user_profile.learner_preference.difficulty){
@@ -69,7 +69,7 @@ export default class Quiz extends React.Component {
       case 0:
       case 1:
       case 2:
-
+        console.log("Empiezo por Basic");
         for(let i = 0; i < basicQuiz.length; i++){
           questions.push(basicQuiz[i]);
         }
@@ -87,7 +87,7 @@ export default class Quiz extends React.Component {
       case 3:
       case 4:
       case 5:
-
+        console.log("Empiezo por Medium");
         for(let i = 0; i < mediumQuiz.length; i++){
           questions.push(mediumQuiz[i]);
         }
@@ -113,7 +113,7 @@ export default class Quiz extends React.Component {
 
       case 8:
       case 9:
-
+        console.log("Empiezo por Advanced");
         questions = advancedQuiz;
         break;
       default:
@@ -236,26 +236,31 @@ export default class Quiz extends React.Component {
 
             }
           } else {
+            let basicLength = basicQuiz.length;
+            let mediumLength = mediumQuiz.length;
+            let highLength = highQuiz.length;
+            let advancedLength = advancedQuiz.length;
 
-            for(let i = 0; i < Math.min(basicQuiz.length, Math.floor(this.props.config.n / 4)); i++){
+
+            for(let i = 0; i < Math.min(basicLength, Math.floor(this.props.config.n / 4)); i++){
 
               let m = getRandomInt(0, basicQuiz.length - 1);
               incrementalQuiz.push(basicQuiz[m]);
               basicQuiz.splice(m, 1);
             }
-            for(let i = 0; i < Math.min(mediumQuiz.length, Math.floor(this.props.config.n / 4)); i++){
+            for(let i = 0; i < Math.min(mediumLength, Math.floor(this.props.config.n / 4)); i++){
 
               let m = getRandomInt(0, mediumQuiz.length - 1);
               incrementalQuiz.push(mediumQuiz[m]);
               mediumQuiz.splice(m, 1);
             }
-            for(let i = 0; i < Math.min(highQuiz.length, Math.floor(this.props.config.n / 4)); i++){
+            for(let i = 0; i < Math.min(highLength, Math.floor(this.props.config.n / 4)); i++){
 
               let m = getRandomInt(0, highQuiz.length - 1);
               incrementalQuiz.push(highQuiz[m]);
               highQuiz.splice(m, 1);
             }
-            for(let i = 0; i < Math.min(advancedQuiz.length, this.props.config.n - 3 * Math.floor(this.props.config.n / 4)); i++){
+            for(let i = 0; i < Math.min(advancedLength, this.props.config.n - 3 * Math.floor(this.props.config.n / 4)); i++){
 
               let m = getRandomInt(0, advancedQuiz.length - 1);
               incrementalQuiz.push(advancedQuiz[m]);
@@ -285,7 +290,7 @@ export default class Quiz extends React.Component {
     console.log(this.state.quiz);
     console.log(this.state.noDiffQuiz);
 
-    if(this.state.quiz[this.state.current_question_index - 1].Dificultad !== undefined){
+    if(typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
       this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
     }
 
@@ -305,8 +310,8 @@ export default class Quiz extends React.Component {
     let isLastQuestion = (this.state.current_question_index === this.state.quiz.length);
     if(isLastQuestion === false){
       this.setState({current_question_index:(this.state.current_question_index + 1)});
-      if(typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== undefined){
-        this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
+      if(typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
+        this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index].Dificultad));
       }
     } else {
       this.props.dispatch(finishApp(true));
@@ -335,7 +340,10 @@ export default class Quiz extends React.Component {
     case "multichoice":
       currentQuestionRender = (<MCQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={this.props.config.comodin} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
-    case "truefalse":
+    case "truefalse_multichoice":
+      currentQuestionRender = (<MCQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      break;
+    case "multi_truefalse":
       currentQuestionRender = (<TFQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "matching":

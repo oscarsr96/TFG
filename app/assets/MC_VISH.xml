@@ -7,21 +7,21 @@
   </question>
   <question type="multichoice">
     <name>
-      <text>¿De qué color es el caballo blanco de santiago?­</text>
+      <text>­Señala la opción correcta</text>
     </name>
     <questiontext>
-      <text>¿De qué color es el caballo blanco de santiago?­</text>
+      <text>­Señala la opción correcta</text>
     </questiontext>
-    <shuffleanswers>1</shuffleanswers>
+    <shuffleanswers>0</shuffleanswers>
     <single>true</single>
     <answer fraction="0">
-      <text>Azul­</text>
+      <text>­La fuerza se mide en kilogramos</text>
+    </answer>
+    <answer fraction="0">
+      <text>­La fuerza se mide en metros cuadrados</text>
     </answer>
     <answer fraction="100">
-      <text>Amarillo­</text>
-    </answer>
-    <answer fraction="100">
-      <text>Blanco­</text>
+      <text>­La fuerza se mide en newtons</text>
     </answer>
   </question>
 </quiz>
