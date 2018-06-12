@@ -276,6 +276,7 @@ export default class Quiz extends React.Component {
 
     if((typeof this.props.config.n === "number") && (this.props.config.n >= 1)){
       // Limit number of questions
+      console.log("N es un numero")
       questions = questions.slice(0, Math.min(this.props.config.n, questions.length));
     }
 
