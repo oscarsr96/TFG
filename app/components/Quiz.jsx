@@ -11,6 +11,7 @@ import MCQuestion from './MCQuestion.jsx';
 import SHAQuestion from './SHAQuestion.jsx';
 import SortingQuestion from './SortingQuestion.jsx';
 import TFQuestion from './TFQuestion.jsx';
+import TrueFalseQuestion from './TrueFalseQuestion.jsx';
 import Countdown from './CountDown.jsx';
 
 export default class Quiz extends React.Component {
@@ -305,6 +306,15 @@ export default class Quiz extends React.Component {
   }
   onNextQuestion(){
 
+    if(this.state.quiz[this.state.current_question_index - 1].Tipo === "multichoice"){
+      for(let i = 0; i < this.state.quiz[this.state.current_question_index - 1].Opciones.length; i++){
+
+        document.getElementById(200 * i + 200).style = "display: block";
+
+      }
+
+    }
+
     console.log(this.props.user_profile.learner_preference.difficulty);
     let isLastQuestion = (this.state.current_question_index === this.state.quiz.length);
     if(isLastQuestion === false){
@@ -339,8 +349,8 @@ export default class Quiz extends React.Component {
     case "multichoice":
       currentQuestionRender = (<MCQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={this.props.config.comodin} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
-    case "truefalse_multichoice":
-      currentQuestionRender = (<MCQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+    case "truefalse":
+      currentQuestionRender = (<TrueFalseQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "multi_truefalse":
       currentQuestionRender = (<TFQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);

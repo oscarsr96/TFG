@@ -3,10 +3,10 @@ import React from 'react';
 import * as Utils from '../vendors/Utils.js';
 import {objectiveAccomplished, objectiveAccomplishedThunk} from './../reducers/actions';
 
-import MCQuestionChoice from './MCQuestionChoice.jsx';
+import TrueFalseChoice from './TrueFalseChoice.jsx';
 import QuestionButtons from './QuestionButtons.jsx';
 
-export default class MCQuestion extends React.Component {
+export default class TrueFalseQuestion extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -111,7 +111,7 @@ export default class MCQuestion extends React.Component {
 
     for(let i = 0; i < this.props.question.Opciones.length; i++){
 
-      choices.push(<MCQuestionChoice id={200 * i + 200} key={"MyQuestion_" + "question_choice_" + i} options={this.state.selected_choices_ids.length} choice={this.props.question.Opciones[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.Opciones[i].Id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered}/>);
+      choices.push(<TrueFalseChoice id={200 * i + 200} key={"MyQuestion_" + "question_choice_" + i} options={this.state.selected_choices_ids.length} choice={this.props.question.Opciones[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.Opciones[i].Id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered}/>);
     }
     return (
       <div className="container">

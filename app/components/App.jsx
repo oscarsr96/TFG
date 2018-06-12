@@ -130,8 +130,6 @@ export class App extends React.Component {
 
               }
 
-              customjson[h].Tipo = "truefalse_multichoice";
-
             }
 
             else if(pregunta[x].$.type === "multichoice"){

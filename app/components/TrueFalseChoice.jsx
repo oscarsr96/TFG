@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class MCQuestionChoice extends React.Component {
+export default class TrueFalseChoice extends React.Component {
   constructor(props){
     super(props);
   }
@@ -25,7 +25,7 @@ export default class MCQuestionChoice extends React.Component {
     return (
       <div id={this.props.id} className={questionClassName}>
         <div className="questionC1">
-          <input type="checkbox" checked={this.props.checked} onChange={() => this.props.handleChange(this.props.choice)} disabled={showCorrection}/>
+          <input type="radio" name="button" checked={this.props.checked} onChange={() => this.props.handleChange(this.props.choice)} disabled={showCorrection}/>
         </div>
         <div className="questionC2">
           <p>{this.props.choice.Texto}</p>

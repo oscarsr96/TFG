@@ -10,7 +10,7 @@
         <text>Marque si las siguientes afirmaciones son verdaderas o falsas.</text>
         </name>
         <questiontext>
-        <text>­Si un coche circula a 25 m/s,lo hace a 90km/h</text>
+        <text>­Si un coche circula a 25 m/s, lo hace a 90km/h</text>
         </questiontext>
         <answer fraction="100">
         <text>true</text>
@@ -24,7 +24,7 @@
         <text>Marque si las siguientes afirmaciones son verdaderas o falsas.</text>
         </name>
         <questiontext>
-        <text>­Si un coche va a 72 km/h,lo hace a 20m/s</text>
+        <text>­Si un coche va a 72 km/h, lo hace a 20m/s</text>
         </questiontext>
         <answer fraction="100">
         <text>true</text>
@@ -65,6 +65,9 @@
         <answer fraction="0">
         <text>Kilogramos</text>
         </answer>
+		<answer fraction="0">
+        <text>Pascales</text>
+        </answer>
         </question>
 		<question type="multichoice">
         <name>
@@ -103,6 +106,9 @@
         <answer fraction="0">
         <text>El Sistema Físico de Unidades</text>
         </answer>
+		<answer fraction="0">
+        <text>El Sistema de Magnitudes</text>
+        </answer>
         </question>
 		<question type="multichoice">
         <name>
@@ -140,6 +146,9 @@
         </answer>
         <answer fraction="0">
         <text>Es una mezcla heterogénea</text>
+        </answer>
+		<answer fraction="0">
+        <text>No es una mezcla</text>
         </answer>
         </question>
 		<question type="multichoice">

@@ -35,7 +35,11 @@ export default class SHAQuestion extends React.Component {
     this.props.onResetQuiz();
   }
   onNextQuestion(){
+
+    document.getElementById("numb").value = "";
+
     this.props.onNextQuestion();
+
   }
   comprobar(){
 

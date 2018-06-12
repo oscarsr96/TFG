@@ -14,7 +14,7 @@ export let GLOBAL_CONFIG = {
     n:100,
     difficulty:"Basic",
     comodin:true,
-    fichero:"assets/fisica_dificultad.xml",
+    fichero:"assets/fisica.xml",
     titulo:"FyQ App",
     tiempo:15,
   },

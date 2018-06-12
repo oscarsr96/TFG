@@ -36,6 +36,7 @@ export default class SortingQuestion extends React.Component {
   onNextQuestion(){
 
     document.getElementById("respuestaSorting").innerHTML = "";
+    this.setState({boton1:2, boton2:4, boton3:1, boton4:3});
     this.props.onNextQuestion();
   }
   boton1(){
