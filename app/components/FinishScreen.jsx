@@ -69,7 +69,7 @@ export default class FinishScreen extends React.Component {
         <h1>{this.state.nota}</h1>
         </div>
         <div className="circle">
-        <CircularProgressbar percentage={(this.props.tracking.score * 100).toFixed(2)} textForPercentage={(percentage) => `${percentage}`}/>
+        <CircularProgressbar percentage={Math.round(this.props.tracking.score * 100)} textForPercentage={(percentage) => `${percentage}`}/>
         </div>
       </div>
     );
