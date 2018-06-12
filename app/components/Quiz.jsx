@@ -10,7 +10,7 @@ import QuizHeader from './QuizHeader.jsx';
 import MCQuestion from './MCQuestion.jsx';
 import SHAQuestion from './SHAQuestion.jsx';
 import SortingQuestion from './SortingQuestion.jsx';
-import TFQuestion from './TFQuestion.jsx';
+import MultiChoice1CorrectQuestion from './MultiChoice1CorrectQuestion.jsx';
 import TrueFalseQuestion from './TrueFalseQuestion.jsx';
 import Countdown from './CountDown.jsx';
 
@@ -353,7 +353,7 @@ export default class Quiz extends React.Component {
       currentQuestionRender = (<TrueFalseQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "multi_truefalse":
-      currentQuestionRender = (<TFQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<MultiChoice1CorrectQuestion time={this.props.config.tiempo} quiz={this.state.quiz} comodin={false} index={this.state.current_question_index} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "matching":
       currentQuestionRender = (<SortingQuestion time={this.props.config.tiempo} quiz={this.state.quiz} index={this.state.current_question_index} comodin={false} question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);

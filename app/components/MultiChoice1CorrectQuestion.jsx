@@ -3,11 +3,10 @@ import React from 'react';
 import * as Utils from '../vendors/Utils.js';
 import {objectiveAccomplished, objectiveAccomplishedThunk} from './../reducers/actions';
 
-import TFQuestionChoice from './TFQuestionChoice.jsx';
 import QuestionButtons from './QuestionButtons.jsx';
 import {RadioGroup, Radio} from 'react-radio-group';
 
-export default class TFQuestion extends React.Component {
+export default class MultiChoice1CorrectQuestion extends React.Component {
   constructor(props){
     super(props);
     this.state = {
