@@ -55,7 +55,7 @@ export default class SHAQuestion extends React.Component {
        // If x is Not a Number or less than one or greater than 10
 
     if(x !== this.props.question.Opciones[0].Texto){
-      text = "Error,la respuesta correcta es " + this.props.question.Opciones[0].Texto;
+      text = "Error, la respuesta correcta es " + this.props.question.Opciones[0].Texto;
       let objective = this.props.objective;
       this.props.dispatch(objectiveAccomplished(objective.id, 0));
 
