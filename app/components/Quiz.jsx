@@ -268,9 +268,9 @@ export default class Quiz extends React.Component {
   }
   componentDidMount(){
 
-    if(typeof this.props.config.difficulty !=="undefined" && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
+    if((typeof this.props.config.difficulty !=="undefined" || typeof this.props.user_profile.learner_preference.difficulty !=="undefined" ) && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
       this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
-     }
+     } 
     
 
     // Create objectives (One per question included in the quiz)
@@ -298,7 +298,7 @@ export default class Quiz extends React.Component {
     let isLastQuestion = (this.state.current_question_index === this.state.quiz.length);
     if(isLastQuestion === false){
       this.setState({current_question_index:(this.state.current_question_index + 1)});
-      if(typeof this.props.config.difficulty !== "undefined" && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
+    if((typeof this.props.config.difficulty !=="undefined" || typeof this.props.user_profile.learner_preference.difficulty !=="undefined" ) && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
         this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index].Dificultad));
       }
      
@@ -311,7 +311,7 @@ export default class Quiz extends React.Component {
     this.setState({current_question_index:1});
     this.props.dispatch(resetObjectives());
 
-    if(typeof this.props.config.difficulty !== "undefined" && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== undefined){
+    if((typeof this.props.config.difficulty !=="undefined" || typeof this.props.user_profile.learner_preference.difficulty !=="undefined" ) && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
       this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
     }
   }

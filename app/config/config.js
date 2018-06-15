@@ -12,7 +12,7 @@ export let GLOBAL_CONFIG = {
       score_threshold:0.6,
     },
     n:15,
-    //difficulty:"pepe",
+    //difficulty:"pepe", // Niveles: Basic, Medium, High, Advanced. Para cualquier otro valor es incremental.
     comodin:true,
     fichero:"assets/fisica_dificultad.xml",
     titulo:"FyQ App",

@@ -3,7 +3,7 @@ let LMS_CONFIG = {
   debug_scorm_player:false,
   scorm2004:{
     learner_preference:{
-      _children:"audio_level,language,delivery_speed,audio_captioning",
+      _children:"audio_level,language,delivery_speed,audio_captioning,difficulty",
       difficulty:"random",
     },
   },
