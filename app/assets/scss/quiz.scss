@@ -124,7 +124,7 @@ div.container div.question div.container_truefalse div.truefalse_blanco{
 
 div.container div.question div.question_pregunta  {
   display: inline-block;
-  height: 20%;
+  height: 12%;
   width: 85%;
 }
 
@@ -295,11 +295,10 @@ div.container div.question div.question_choice_correct, div.question div.questio
 }
 
 div.container div.questionButtonsWrapper div.buttons{
-  width: 50%;
+  width: 70%;
   float: left;
 }
 div.container div.questionButtonsWrapper div.nextButton{
-  width: 50%;
   margin-left: 15%;
 }
 
@@ -367,7 +366,6 @@ div.container div.questionButtonsWrapper div.buttons button.resetQuiz {
   cursor: pointer;
 }
 div.questionButtonsWrapper div.nextButton button.nextQuestion {
-  float:right;
   padding: 10px;
   margin-left: 10px;
   color: black;
