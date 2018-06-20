@@ -27,6 +27,7 @@ export default class Quiz extends React.Component {
     let incrementalQuiz = [];
     let onetothreeQuiz = [];
     let noDiffQuiz = [];
+    let showDifficulty=true;
 
     let adaptive_sorted = false;
     if((this.props.config.adaptive === true) && (typeof props.user_profile === "object") && (typeof props.user_profile.learner_preference === "object")){
@@ -64,29 +65,50 @@ export default class Quiz extends React.Component {
 
     if(this.props.user_profile.learner_preference.difficulty !== undefined && noDiffQuiz.length === 0 && typeof this.props.user_profile.learner_preference.difficulty === "number"){
       console.log("La dificultad lms no es undefined");
+      console.log(this.props.user_profile.learner_preference.difficulty)
 
       switch (this.props.user_profile.learner_preference.difficulty){
 
       case 0:
       case 1:
       case 2:
-        questions=basicQuiz;
+        if(basicQuiz.length !== 0){
+        questions = basicQuiz;
+        } else{
+          questions=quiz;
+          showDifficulty=false;
+        }
         break;
 
       case 3:
       case 4:
       case 5:
-        questions=mediumQuiz;
+        if(mediumQuiz.length !== 0){
+        questions = mediumQuiz;
+        } else{
+          questions=quiz;
+          showDifficulty=false;
+        }
         break;
 
       case 6:
       case 7:
-        questions=highQuiz;
+        if(highQuiz.length !== 0){
+        questions = highQuiz;
+        } else{
+          questions=quiz;
+          showDifficulty=false;
+        }
         break;
 
       case 8:
       case 9:
+        if(advancedQuiz.length !== 0){
         questions = advancedQuiz;
+        } else{
+          questions=quiz;
+          showDifficulty=false;
+        }
         break;
       default:
         break;
@@ -98,25 +120,45 @@ export default class Quiz extends React.Component {
       if(noDiffQuiz.length !== 0){
         questions = noDiffQuiz;
       }
-      else if (this.props.config.difficulty === undefined){
-        questions=quiz;
+      else if(this.props.config.difficulty === undefined){
+        questions = quiz;
       }
       else if(this.props.config.difficulty !== undefined && noDiffQuiz.length === 0){
         switch (this.props.config.difficulty){
         case "Basic":
-          questions = basicQuiz;
+          if(basicQuiz.length !== 0){
+            questions = basicQuiz;
+          } else{
+          questions=quiz;
+          showDifficulty=false;
+          }
           break;
         case "Medium":
-          questions = mediumQuiz;
+          if(mediumQuiz.length !== 0){
+            questions = mediumQuiz;
+          } else{
+          questions=quiz;
+          showDifficulty=false;
+          }
           break;
         case "High":
-          questions = highQuiz;
+          if(highQuiz.length !== 0){
+            questions = highQuiz;
+          } else{
+          questions=quiz;
+          showDifficulty=false;
+          }
           break;
         case "Advanced":
-          questions = advancedQuiz;
+          if(advancedQuiz.length !== 0){
+            questions = advancedQuiz;
+          } else{
+          questions=quiz;
+          showDifficulty=false;
+          }
           break;
 
-        case "Incremental":
+        default:
 
           if(this.props.config.n < 4){
             let m = getRandomInt(1, 4);
@@ -217,25 +259,25 @@ export default class Quiz extends React.Component {
             let highLength = highQuiz.length;
             let advancedLength = advancedQuiz.length;
 
-            for(let i = 0; i < Math.min(basicLength, Math.floor(this.props.config.n / 4)); i++){
+            for(let i = 0; i < basicLength;  i++){
 
               let m = getRandomInt(0, basicQuiz.length - 1);
               incrementalQuiz.push(basicQuiz[m]);
               basicQuiz.splice(m, 1);
             }
-            for(let i = 0; i < Math.min(mediumLength, Math.floor(this.props.config.n / 4)); i++){
+            for(let i = 0; i < mediumLength; i++){
 
               let m = getRandomInt(0, mediumQuiz.length - 1);
               incrementalQuiz.push(mediumQuiz[m]);
               mediumQuiz.splice(m, 1);
             }
-            for(let i = 0; i < Math.min(highLength, Math.floor(this.props.config.n / 4)); i++){
+            for(let i = 0; i < highLength; i++){
 
               let m = getRandomInt(0, highQuiz.length - 1);
               incrementalQuiz.push(highQuiz[m]);
               highQuiz.splice(m, 1);
             }
-            for(let i = 0; i < Math.min(advancedLength, this.props.config.n - 3 * Math.floor(this.props.config.n / 4)); i++){
+            for(let i = 0; i < advancedLength; i++){
 
               let m = getRandomInt(0, advancedQuiz.length - 1);
               incrementalQuiz.push(advancedQuiz[m]);
@@ -246,17 +288,15 @@ export default class Quiz extends React.Component {
             break;
           }
 
-        default:
-          questions=quiz;
-          
-          
+    
+
         }
       }
     }
 
     if((typeof this.props.config.n === "number") && (this.props.config.n >= 1)){
       // Limit number of questions
-      console.log("N es un numero")
+      console.log("N es un numero");
       questions = questions.slice(0, Math.min(this.props.config.n, questions.length));
     }
 
@@ -264,14 +304,15 @@ export default class Quiz extends React.Component {
       quiz:questions,
       current_question_index:1,
       nodiff:noDiffQuiz,
+      showDifficulty:showDifficulty,
+
     };
   }
   componentDidMount(){
 
-    if((typeof this.props.config.difficulty !=="undefined" || typeof this.props.user_profile.learner_preference.difficulty !=="undefined" ) && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
+    if( this.state.showDifficulty && (typeof this.props.config.difficulty !== "undefined" || typeof this.props.user_profile.learner_preference.difficulty !== "undefined") && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
       this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
-     } 
-    
+    }
 
     // Create objectives (One per question included in the quiz)
     let objectives = [];
@@ -298,10 +339,10 @@ export default class Quiz extends React.Component {
     let isLastQuestion = (this.state.current_question_index === this.state.quiz.length);
     if(isLastQuestion === false){
       this.setState({current_question_index:(this.state.current_question_index + 1)});
-    if((typeof this.props.config.difficulty !=="undefined" || typeof this.props.user_profile.learner_preference.difficulty !=="undefined" ) && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
+      if(this.state.showDifficulty &&(typeof this.props.config.difficulty !== "undefined" || typeof this.props.user_profile.learner_preference.difficulty !== "undefined") && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
         this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index].Dificultad));
       }
-     
+
     } else {
       this.props.dispatch(finishApp(true));
     }
@@ -311,7 +352,7 @@ export default class Quiz extends React.Component {
     this.setState({current_question_index:1});
     this.props.dispatch(resetObjectives());
 
-    if((typeof this.props.config.difficulty !=="undefined" || typeof this.props.user_profile.learner_preference.difficulty !=="undefined" ) && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
+    if(this.state.showDifficulty &&(typeof this.props.config.difficulty !== "undefined" || typeof this.props.user_profile.learner_preference.difficulty !== "undefined") && typeof this.state.quiz[this.state.current_question_index - 1].Dificultad !== "undefined"){
       this.props.dispatch(addDifficulty(this.state.quiz[this.state.current_question_index - 1].Dificultad));
     }
   }

@@ -14,7 +14,7 @@ export default class TrueFalseChoice extends React.Component {
         } else {
           questionClassName += " question_choice_incorrect";
         }
-      }  else if(!this.props.checked && this.props.choice.Valor === "100"){
+      } else if(!this.props.checked && this.props.choice.Valor === "100"){
         questionClassName += " question_choice_blank";
       }
     }
